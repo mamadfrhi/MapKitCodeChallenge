@@ -15,33 +15,19 @@ final class AppCoordinator: Coordinator { // TabCoordinator
     
     var rootTabBarController = UITabBarController()
     
+    var apiClient: Network = {
+        let configuration = URLSessionConfiguration.default
+        configuration.httpAdditionalHeaders = ["Content-Type": "application/json; charset=utf-8"]
+        let apiClient = ApiClient(configuration: configuration)
+        return apiClient
+    }()
+    
     // MARK: Child Coordinators
-    var mapCarsCoordinator: Coordinator?
+    weak var mapCarsCoordinator: Coordinator?
+    weak var listCarsCoordinator: Coordinator?
     
     init(window: UIWindow?) {
         self.window = window
-    }
-    
-    let tabController = UITabBarController()
-    
-    func makeTabBar() -> UITabBarController {
-        var controllers: [UIViewController] = []
-        
-        // in Coordinator
-        let mapCarsStoryboard = UIStoryboard(name: "MapCars", bundle: nil)
-        let mapCarsVC: MapCarsVC = mapCarsStoryboard.instantiateViewController(withIdentifier: "MapCarsVC") as! MapCarsVC
-        mapCarsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 0)
-        
-        let listCarsStoryboard = UIStoryboard(name: "ListCars", bundle: nil)
-        let listCarsVC: ListCarsVC = listCarsStoryboard.instantiateViewController(withIdentifier: "ListCarsVC") as! ListCarsVC
-        listCarsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 0)
-        
-        controllers.append(mapCarsVC)
-        controllers.append(listCarsVC)
-        
-        tabController.viewControllers = controllers
-         
-        return tabController
     }
     
     override func start() {
@@ -50,12 +36,31 @@ final class AppCoordinator: Coordinator { // TabCoordinator
         window.rootViewController = rootTabBarController
         window.makeKeyAndVisible()
         
+        startWaitingVC()
+    }
+}
+
+// MARK: Starts
+extension AppCoordinator {
+    private func startTabBarControllers(with cars: [Car]) {
         // first tab
         let mapCarsCoordinator = MapCarsCoordinator(rootTabBarController: rootTabBarController)
+        self.addChildCoordinator(mapCarsCoordinator)
         mapCarsCoordinator.start()
         
         // second tab
         let listCarsCoordinator = ListCarsCoordinator(rootTabBarController: rootTabBarController)
+        self.addChildCoordinator(listCarsCoordinator)
         listCarsCoordinator.start()
     }
+    
+    
+    private func startWaitingVC() {
+        let waitingStoryBoard = UIStoryboard.init(name: "Waiting", bundle: nil)
+        let waitingVC = waitingStoryBoard.instantiateViewController(withIdentifier: "WaitingVC") as! WaitingVC
+        let waitingVM = WaitingViewModel(apiClient: apiClient)
+        waitingVC.viewModel = waitingVM
+        window?.rootViewController = waitingVC
+    }
 }
+
