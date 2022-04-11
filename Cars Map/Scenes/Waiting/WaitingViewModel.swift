@@ -37,14 +37,17 @@ class WaitingViewModel: WaitingViewModelType {
 extension WaitingViewModel {
     func fetch() {
         // 1. request
-        apiClient.fetch { (result) in
+        apiClient.fetch {
+            [weak self]
+            (result) in
+            guard let sSelf = self else { return }
             switch result {
             case .success(let cars):
                 if let cars = cars as? [Car] {
-                    self.cars = cars
+                    sSelf.cars = cars
                 }else {
                     DispatchQueue.main.async {
-                        self.viewDelegate?.showError(text: "Bad error")
+                        sSelf.viewDelegate?.showError(text: "Bad error")
                     }
                 }
                 
@@ -52,7 +55,7 @@ extension WaitingViewModel {
             // refresh view using delegate
             case .failure(let error):
                 let errorMessage = error.localizedDescription
-                self.viewDelegate?.showError(text: errorMessage)
+                sSelf.viewDelegate?.showError(text: errorMessage)
             }
         }
     }
