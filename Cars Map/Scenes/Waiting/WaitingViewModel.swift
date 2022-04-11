@@ -22,11 +22,10 @@ class WaitingViewModel: WaitingViewModelType {
             // call the tab bars
         }
     }
-        
+    
     //MARK: Waiting VM
     init(apiClient: Network) {
         self.apiClient = apiClient
-        print("WaitingVM is running!")
     }
     
     func start() {
@@ -47,15 +46,15 @@ extension WaitingViewModel {
                     sSelf.cars = cars
                 }else {
                     DispatchQueue.main.async {
-                        sSelf.viewDelegate?.showError(text: "Bad error")
+                        sSelf.viewDelegate?.showError(text: CarsAPIError.noData.localizedDescription)
                     }
                 }
-                
-            // add to array
             // refresh view using delegate
             case .failure(let error):
                 let errorMessage = error.localizedDescription
-                sSelf.viewDelegate?.showError(text: errorMessage)
+                DispatchQueue.main.async {
+                    sSelf.viewDelegate?.showError(text: errorMessage)
+                }
             }
         }
     }
