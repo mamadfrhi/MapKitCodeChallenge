@@ -32,6 +32,10 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EtK-7w-wmG">
+                                        <rect key="frame" x="79.5" y="138.5" width="41" height="0.0"/>
+                                        <state key="normal" title="Retry!"/>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="6M3-tt-Teu"/>
@@ -45,6 +49,11 @@
                             <constraint firstItem="vIj-VP-4u3" firstAttribute="centerY" secondItem="5HY-c8-I2s" secondAttribute="centerY" id="nGG-q9-6d8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="acitivityIndicator" destination="kXZ-NH-Uba" id="NVe-bT-ctX"/>
+                        <outlet property="infoLabel" destination="bdW-rp-rkT" id="rue-92-4kb"/>
+                        <outlet property="retryBtn" destination="EtK-7w-wmG" id="GOs-eA-nC3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4P-XE-imF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

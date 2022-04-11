@@ -10,6 +10,9 @@ import UIKit
 class WaitingVC: UIViewController {
     
     // MARK: Outlets
+    @IBOutlet weak var acitivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var retryBtn: UIButton!
     
     // MARK: Properties
     var viewModel: WaitingViewModel! {
@@ -21,19 +24,21 @@ class WaitingVC: UIViewController {
     // MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("WaitingVC loaded!")
         viewModel.start()
     }
     
     // MARK: Setup
     
     // MARK: Actions
+    private func retry() {
+        viewModel.retry()
+    }
 }
 
 // MARK: - ViewModel Delegate
 extension WaitingVC: WaitingViewModelViewDelegate {
-    func updateLabelWith(text: String) {
-        print("Update error label to" + text)
+    func showError(text: String) {
+        
     }
     
     func animate(_ flag: Bool) {
