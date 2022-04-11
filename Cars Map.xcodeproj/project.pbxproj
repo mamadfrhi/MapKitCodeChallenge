@@ -7,23 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		879EFF272804AAA000ED0CD0 /* MapCars.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 879EFF262804AAA000ED0CD0 /* MapCars.storyboard */; };
 		87B6E70728049BE60059A1E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6E70628049BE60059A1E3 /* AppDelegate.swift */; };
-		87B6E70928049BE60059A1E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6E70828049BE60059A1E3 /* SceneDelegate.swift */; };
-		87B6E70B28049BE60059A1E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6E70A28049BE60059A1E3 /* ViewController.swift */; };
-		87B6E70E28049BE60059A1E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B6E70C28049BE60059A1E3 /* Main.storyboard */; };
 		87B6E71028049BE70059A1E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87B6E70F28049BE70059A1E3 /* Assets.xcassets */; };
 		87B6E71328049BE70059A1E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B6E71128049BE70059A1E3 /* LaunchScreen.storyboard */; };
+		87B6E73228049E110059A1E3 /* MapCarsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6E73128049E110059A1E3 /* MapCarsVC.swift */; };
+		87B6E73C28049EF10059A1E3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6E73A28049EF10059A1E3 /* Coordinator.swift */; };
+		87B6E73D28049EF10059A1E3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6E73B28049EF10059A1E3 /* AppCoordinator.swift */; };
+		87B6E7412804A1100059A1E3 /* CatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6E73F2804A1100059A1E3 /* CatsViewModel.swift */; };
+		87B6E7422804A1100059A1E3 /* ViewModelAbstractions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6E7402804A1100059A1E3 /* ViewModelAbstractions.swift */; };
+		87B6E7492804A1310059A1E3 /* ListCars.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B6E7482804A1310059A1E3 /* ListCars.storyboard */; };
+		87B6E74C2804A1370059A1E3 /* ListCarsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6E74B2804A1370059A1E3 /* ListCarsVC.swift */; };
+		87B6E7502804A4700059A1E3 /* MapCarsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6E74F2804A4700059A1E3 /* MapCarsCoordinator.swift */; };
+		87B6E7532804A4C50059A1E3 /* ListCarsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6E7522804A4C50059A1E3 /* ListCarsCoordinator.swift */; };
+		87B6E7572804A5480059A1E3 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6E7562804A5480059A1E3 /* ApiClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		879EFF262804AAA000ED0CD0 /* MapCars.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapCars.storyboard; sourceTree = "<group>"; };
 		87B6E70328049BE60059A1E3 /* Cars Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cars Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87B6E70628049BE60059A1E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		87B6E70828049BE60059A1E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		87B6E70A28049BE60059A1E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		87B6E70D28049BE60059A1E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		87B6E70F28049BE70059A1E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87B6E71228049BE70059A1E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87B6E71428049BE70059A1E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87B6E73128049E110059A1E3 /* MapCarsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCarsVC.swift; sourceTree = "<group>"; };
+		87B6E73A28049EF10059A1E3 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		87B6E73B28049EF10059A1E3 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		87B6E73F2804A1100059A1E3 /* CatsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatsViewModel.swift; sourceTree = "<group>"; };
+		87B6E7402804A1100059A1E3 /* ViewModelAbstractions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelAbstractions.swift; sourceTree = "<group>"; };
+		87B6E7482804A1310059A1E3 /* ListCars.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ListCars.storyboard; sourceTree = "<group>"; };
+		87B6E74B2804A1370059A1E3 /* ListCarsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCarsVC.swift; sourceTree = "<group>"; };
+		87B6E74F2804A4700059A1E3 /* MapCarsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCarsCoordinator.swift; sourceTree = "<group>"; };
+		87B6E7522804A4C50059A1E3 /* ListCarsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCarsCoordinator.swift; sourceTree = "<group>"; };
+		87B6E7562804A5480059A1E3 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,14 +73,102 @@
 			isa = PBXGroup;
 			children = (
 				87B6E70628049BE60059A1E3 /* AppDelegate.swift */,
-				87B6E70828049BE60059A1E3 /* SceneDelegate.swift */,
-				87B6E70A28049BE60059A1E3 /* ViewController.swift */,
-				87B6E70C28049BE60059A1E3 /* Main.storyboard */,
+				87B6E71D28049CD20059A1E3 /* Scenes */,
+				87B6E71F28049CEC0059A1E3 /* Resources */,
+			);
+			path = "Cars Map";
+			sourceTree = "<group>";
+		};
+		87B6E71D28049CD20059A1E3 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				87B6E73A28049EF10059A1E3 /* Coordinator.swift */,
+				87B6E73B28049EF10059A1E3 /* AppCoordinator.swift */,
+				87B6E7562804A5480059A1E3 /* ApiClient.swift */,
+				87B6E72428049D760059A1E3 /* MapCars */,
+				87B6E72528049D800059A1E3 /* ListCars */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		87B6E71F28049CEC0059A1E3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				87B6E70F28049BE70059A1E3 /* Assets.xcassets */,
 				87B6E71128049BE70059A1E3 /* LaunchScreen.storyboard */,
 				87B6E71428049BE70059A1E3 /* Info.plist */,
 			);
-			path = "Cars Map";
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		87B6E72428049D760059A1E3 /* MapCars */ = {
+			isa = PBXGroup;
+			children = (
+				87B6E74F2804A4700059A1E3 /* MapCarsCoordinator.swift */,
+				87B6E72A28049DD00059A1E3 /* ViewModel */,
+				87B6E72B28049DD80059A1E3 /* View */,
+				87B6E72D28049DE40059A1E3 /* ViewController */,
+			);
+			path = MapCars;
+			sourceTree = "<group>";
+		};
+		87B6E72528049D800059A1E3 /* ListCars */ = {
+			isa = PBXGroup;
+			children = (
+				87B6E7522804A4C50059A1E3 /* ListCarsCoordinator.swift */,
+				87B6E72928049DB30059A1E3 /* ViewModel */,
+				87B6E72628049D950059A1E3 /* View */,
+				87B6E72828049DA50059A1E3 /* ViewController */,
+			);
+			path = ListCars;
+			sourceTree = "<group>";
+		};
+		87B6E72628049D950059A1E3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				87B6E7482804A1310059A1E3 /* ListCars.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		87B6E72828049DA50059A1E3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				87B6E74B2804A1370059A1E3 /* ListCarsVC.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		87B6E72928049DB30059A1E3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		87B6E72A28049DD00059A1E3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				87B6E73F2804A1100059A1E3 /* CatsViewModel.swift */,
+				87B6E7402804A1100059A1E3 /* ViewModelAbstractions.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		87B6E72B28049DD80059A1E3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				879EFF262804AAA000ED0CD0 /* MapCars.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		87B6E72D28049DE40059A1E3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				87B6E73128049E110059A1E3 /* MapCarsVC.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,9 +228,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				879EFF272804AAA000ED0CD0 /* MapCars.storyboard in Resources */,
 				87B6E71328049BE70059A1E3 /* LaunchScreen.storyboard in Resources */,
 				87B6E71028049BE70059A1E3 /* Assets.xcassets in Resources */,
-				87B6E70E28049BE60059A1E3 /* Main.storyboard in Resources */,
+				87B6E7492804A1310059A1E3 /* ListCars.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,23 +242,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87B6E70B28049BE60059A1E3 /* ViewController.swift in Sources */,
+				87B6E73D28049EF10059A1E3 /* AppCoordinator.swift in Sources */,
+				87B6E7422804A1100059A1E3 /* ViewModelAbstractions.swift in Sources */,
+				87B6E73228049E110059A1E3 /* MapCarsVC.swift in Sources */,
+				87B6E74C2804A1370059A1E3 /* ListCarsVC.swift in Sources */,
 				87B6E70728049BE60059A1E3 /* AppDelegate.swift in Sources */,
-				87B6E70928049BE60059A1E3 /* SceneDelegate.swift in Sources */,
+				87B6E7412804A1100059A1E3 /* CatsViewModel.swift in Sources */,
+				87B6E7502804A4700059A1E3 /* MapCarsCoordinator.swift in Sources */,
+				87B6E7532804A4C50059A1E3 /* ListCarsCoordinator.swift in Sources */,
+				87B6E73C28049EF10059A1E3 /* Coordinator.swift in Sources */,
+				87B6E7572804A5480059A1E3 /* ApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		87B6E70C28049BE60059A1E3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				87B6E70D28049BE60059A1E3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		87B6E71128049BE70059A1E3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -288,7 +392,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5GB4GGS54M;
-				INFOPLIST_FILE = "Cars Map/Info.plist";
+				INFOPLIST_FILE = "Cars Map/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -296,7 +401,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kabok.mohammadfarrahi.Cars-Map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -307,7 +412,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5GB4GGS54M;
-				INFOPLIST_FILE = "Cars Map/Info.plist";
+				INFOPLIST_FILE = "Cars Map/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -315,7 +421,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kabok.mohammadfarrahi.Cars-Map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
