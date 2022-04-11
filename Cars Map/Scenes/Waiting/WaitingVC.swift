@@ -30,7 +30,7 @@ class WaitingVC: UIViewController {
     // MARK: Setup
     
     // MARK: Actions
-    private func retry() {
+    @IBAction func retry(_ sender: Any) {
         viewModel.retry()
         self.hideError()
     }

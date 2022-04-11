@@ -35,6 +35,9 @@
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EtK-7w-wmG">
                                         <rect key="frame" x="119.5" y="138.5" width="41" height="0.0"/>
                                         <state key="normal" title="Retry!"/>
+                                        <connections>
+                                            <action selector="retry:" destination="2HW-QY-sHp" eventType="touchUpInside" id="1Yo-me-jNY"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
