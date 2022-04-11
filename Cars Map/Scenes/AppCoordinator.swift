@@ -50,7 +50,12 @@ final class AppCoordinator: Coordinator { // TabCoordinator
         window.rootViewController = rootTabBarController
         window.makeKeyAndVisible()
         
+        // first tab
         let mapCarsCoordinator = MapCarsCoordinator(rootTabBarController: rootTabBarController)
         mapCarsCoordinator.start()
+        
+        // second tab
+        let listCarsCoordinator = ListCarsCoordinator(rootTabBarController: rootTabBarController)
+        listCarsCoordinator.start()
     }
 }
