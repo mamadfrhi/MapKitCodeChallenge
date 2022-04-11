@@ -16,6 +16,13 @@ class WaitingViewModel: WaitingViewModelType {
     var appCoordinatorDelegate: AppCoordinatorDelegate?
     var viewDelegate: WaitingViewModelViewDelegate?
     
+    var cars : [Car]? {
+        didSet {
+            // I'm filled
+            // call the tab bars
+        }
+    }
+        
     //MARK: Waiting VM
     init(apiClient: Network) {
         self.apiClient = apiClient
@@ -33,16 +40,21 @@ extension WaitingViewModel {
         apiClient.fetch { (result) in
             switch result {
             case .success(let cars):
-                print(cars)
-                // add to array
-                // refresh view using delegate
+                if let cars = cars as? [Car] {
+                    self.cars = cars
+                }else {
+                    DispatchQueue.main.async {
+                        self.viewDelegate?.showError(text: "Bad error")
+                    }
+                }
+                
+            // add to array
+            // refresh view using delegate
             case .failure(let error):
                 let errorMessage = error.localizedDescription
-               // refresh view using delegate
+                self.viewDelegate?.showError(text: errorMessage)
             }
         }
-        // 2. handle errors and show on label -> viewDelegate.
-        // 3. give back data -> appCoordinatorDelegate
     }
     
     func retry() {
@@ -65,6 +77,6 @@ protocol AppCoordinatorDelegate {
 
 // MARK: - ViewModelViewDelegate
 protocol WaitingViewModelViewDelegate {
-    func updateLabelWith(text: String)
-    func animate(_:Bool)
+    func showError(text: String)
+    func hideError()
 }

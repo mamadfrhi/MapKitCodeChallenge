@@ -32,18 +32,21 @@ class WaitingVC: UIViewController {
     // MARK: Actions
     private func retry() {
         viewModel.retry()
+        self.hideError()
     }
 }
 
 // MARK: - ViewModel Delegate
 extension WaitingVC: WaitingViewModelViewDelegate {
     func showError(text: String) {
-        
+        self.infoLabel.text = text + " ☹️"
+        self.acitivityIndicator.isHidden = true
+        self.retryBtn.isHidden = false
     }
     
-    func animate(_ flag: Bool) {
-        print("you should \(flag)")
+    func hideError() {
+        self.infoLabel.text = "I'm calling the server, please give me a sec!\n\n📞🌍☺️"
+        self.acitivityIndicator.isHidden = false
+        self.retryBtn.isHidden = true
     }
-    
-    
 }
