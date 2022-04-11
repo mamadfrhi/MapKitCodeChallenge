@@ -6,6 +6,14 @@
 //
 
 
-struct Car {
+struct Car: Decodable {
+    let id: String
+    let modelName: String
     let name: String
+    let make: String
+    let color: String
+    let fuelLevel: Float
+    let latitude: Float
+    let longitude: Float
+    let carImageUrl: String
 }

@@ -37,9 +37,8 @@ class ApiClient: Network {
             } else if serverError {
                 completionHandler(.failure(CarsAPIError.serverError))
             } else if let data = data {
-//                let cat = try? JSONDecoder().decode(Cat.self, from: data)
-//                completionHandler(.success(cat))
-                completionHandler(.success(data))
+                let cat = try? JSONDecoder().decode([Car].self, from: data)
+                completionHandler(.success(cat))
             }
         })
         task.resume()
