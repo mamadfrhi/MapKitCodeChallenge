@@ -33,9 +33,9 @@ class WaitingViewModel: WaitingViewModelType {
     }
 }
 
+// MARK: Network
 extension WaitingViewModel {
     func fetch() {
-        // 1. request
         apiClient.fetch {
             [weak self]
             (result) in
@@ -49,7 +49,6 @@ extension WaitingViewModel {
                         sSelf.viewDelegate?.showError(text: CarsAPIError.noData.localizedDescription)
                     }
                 }
-            // refresh view using delegate
             case .failure(let error):
                 let errorMessage = error.localizedDescription
                 DispatchQueue.main.async {
@@ -60,9 +59,7 @@ extension WaitingViewModel {
     }
     
     func retry() {
-        // it should resend the request
         fetch()
-        // update views
     }
 }
 
