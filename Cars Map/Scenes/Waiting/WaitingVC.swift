@@ -20,7 +20,9 @@ class WaitingVC: UIViewController {
     
     // MARK: UIViewController
     override func viewDidLoad() {
+        super.viewDidLoad()
         print("WaitingVC loaded!")
+        viewModel.start()
     }
     
     // MARK: Setup

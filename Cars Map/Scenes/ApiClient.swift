@@ -22,8 +22,7 @@ class ApiClient: Network {
     func fetch(completionHandler: @escaping (Result<Any?, Error>) -> ()) {
         
 //        if !connected() { completionHandler(.failure(CatAPIError.disconnected)) }
-        
-        let url = URL(string: "https://cat-fact.herokuapp.com/" + "facts/" + "random")!
+        let url = URL(string: "https://cdn.sixt.io/" + "codingtask/" + "cars")!
         let session = URLSession(configuration: configuration)
         let task = session.dataTask(with: url, completionHandler: { (data, response, error) in
             
@@ -40,6 +39,7 @@ class ApiClient: Network {
             } else if let data = data {
 //                let cat = try? JSONDecoder().decode(Cat.self, from: data)
 //                completionHandler(.success(cat))
+                completionHandler(.success(data))
             }
         })
         task.resume()
