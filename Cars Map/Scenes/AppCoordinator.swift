@@ -59,8 +59,17 @@ extension AppCoordinator {
         let waitingStoryBoard = UIStoryboard.init(name: "Waiting", bundle: nil)
         let waitingVC = waitingStoryBoard.instantiateViewController(withIdentifier: "WaitingVC") as! WaitingVC
         let waitingVM = WaitingViewModel(apiClient: apiClient)
+        waitingVM.appCoordinatorDelegate = self
         waitingVC.viewModel = waitingVM
         window?.rootViewController = waitingVC
     }
 }
 
+// MARK: AppCoordinator Delegate
+extension AppCoordinator: AppCoordinatorDelegate{
+    func dataReceived(cars: [Car]) {
+        print("I'm in AppCoordinator and received:\n:", cars)
+        // close WaitingVC
+        // start tabbars
+    }
+}

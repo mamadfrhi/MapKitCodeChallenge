@@ -18,8 +18,9 @@ class WaitingViewModel: WaitingViewModelType {
     
     var cars : [Car]? {
         didSet {
-            // I'm filled
-            // call the tab bars
+            if let cars = cars {
+                appCoordinatorDelegate?.dataReceived(cars: cars)
+            }
         }
     }
     
