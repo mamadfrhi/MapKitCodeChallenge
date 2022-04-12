@@ -19,14 +19,14 @@ class WaitingViewModel: WaitingViewModelType {
     var cars : [Car]? {
         didSet {
             if let cars = cars {
+                self.fetchImages()
                 DispatchQueue.main.async {
-                    // because it's called from background thread
-                    // and coordinatorDelegate will have view related functinos
                     self.appCoordinatorDelegate?.dataReceived(cars: cars)
                 }
             }
         }
     }
+    var carViewDatas: [CarViewData] = [] // write a tests to check count of this array and above one
     
     //MARK: Waiting VM
     init(apiClient: Network) {
@@ -58,6 +58,24 @@ extension WaitingViewModel {
                 let errorMessage = error.localizedDescription
                 DispatchQueue.main.async {
                     sSelf.viewDelegate?.showError(text: errorMessage)
+                }
+            }
+        }
+    }
+    
+    func fetchImages() {
+        for car in cars! {
+            var carViewData = CarViewData(car: car)
+            apiClient.fetchImage(from: carViewData.carImageNativeUrl) {
+                [weak self]
+                (image) in
+                guard let sSelf = self else { return }
+                if let image = image {
+                    carViewData.uiImage = image
+                    sSelf.carViewDatas.append(carViewData)
+                } else {
+                    // TODO
+                    //                    carViewData.uiImage = load default image
                 }
             }
         }

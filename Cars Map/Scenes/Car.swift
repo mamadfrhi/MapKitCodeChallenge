@@ -44,6 +44,10 @@ struct CarViewData: CarViewDataType {
         annotation.coordinate = coordinate
         return annotation
     }
+    var uiImage : UIImage?
+    var carImageNativeUrl: URL? {
+        return URL(string: car.carImageUrl)
+    }
     
     // MARK: properties
     var id: String {

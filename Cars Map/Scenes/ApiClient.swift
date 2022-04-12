@@ -6,10 +6,11 @@
 //
 
 import Foundation
-
+import UIKit
 
 protocol Network {
     func fetch(completionHandler: @escaping (Result<Any?, Error>) -> ())
+    func fetchImage(from url: URL?, completionHandler: @escaping (UIImage?) -> ())
 }
 
 class ApiClient: Network {
@@ -21,7 +22,7 @@ class ApiClient: Network {
     
     func fetch(completionHandler: @escaping (Result<Any?, Error>) -> ()) {
         
-//        if !connected() { completionHandler(.failure(CatAPIError.disconnected)) }
+        //        if !connected() { completionHandler(.failure(CatAPIError.disconnected)) }
         let url = URL(string: "https://cdn.sixt.io/" + "codingtask/" + "cars")!
         let session = URLSession(configuration: configuration)
         let task = session.dataTask(with: url, completionHandler: { (data, response, error) in
@@ -44,9 +45,25 @@ class ApiClient: Network {
         task.resume()
     }
     
-//    private func connected() -> Bool { // to the internet
-//        InternetConnectionManager.shared.isConnectedToNetwork()
-//    }
+    func fetchImage(from url: URL?, completionHandler: @escaping (UIImage?) -> ()) {
+        DispatchQueue.global().async {
+            if let url = url,
+               let data = try? Data(contentsOf: url),
+               let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    completionHandler(image)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    completionHandler(nil)
+                }
+            }
+        }
+    }
+    
+    //    private func connected() -> Bool { // to the internet
+    //        InternetConnectionManager.shared.isConnectedToNetwork()
+    //    }
 }
 
 struct CarsAPIError: Error {
