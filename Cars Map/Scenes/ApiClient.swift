@@ -10,7 +10,6 @@ import UIKit
 
 protocol Network {
     func fetch(completionHandler: @escaping (Result<Any?, Error>) -> ())
-    func fetchImage(from url: URL?, completionHandler: @escaping (UIImage?) -> ())
 }
 
 class ApiClient: Network {
@@ -45,22 +44,6 @@ class ApiClient: Network {
         task.resume()
     }
     
-    func fetchImage(from url: URL?, completionHandler: @escaping (UIImage?) -> ()) {
-        DispatchQueue.global().async {
-            if let url = url,
-               let data = try? Data(contentsOf: url),
-               let image = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    completionHandler(image)
-                }
-            } else {
-                DispatchQueue.main.async {
-                    completionHandler(nil)
-                }
-            }
-        }
-    }
-    
     //    private func connected() -> Bool { // to the internet
     //        InternetConnectionManager.shared.isConnectedToNetwork()
     //    }
@@ -71,4 +54,27 @@ struct CarsAPIError: Error {
     static let clientError = NSError(domain: "A HTTPS client error occured.", code: 02, userInfo: nil)
     static let serverError = NSError(domain: "A HTTPS server error occured.", code: 03, userInfo: nil)
     static let disconnected = NSError(domain: " You're not connected to the internet. So, you can't add a new cat.\n Whatever you see are offline.", code: 04, userInfo: nil)
+}
+
+
+// MARK: UIImageView Image Download Extension
+extension UIImageView {
+    func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit) {
+        contentMode = mode
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return }
+            DispatchQueue.main.async() { [weak self] in
+                self?.image = image
+            }
+        }.resume()
+    }
+    func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFit) {
+        guard let url = URL(string: link) else { return }
+        downloaded(from: url, contentMode: mode)
+    }
 }
