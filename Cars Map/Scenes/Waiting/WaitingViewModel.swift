@@ -19,7 +19,6 @@ class WaitingViewModel: WaitingViewModelType {
     var cars : [Car]? {
         didSet {
             if let cars = cars {
-                self.fetchImages()
                 DispatchQueue.main.async {
                     self.appCoordinatorDelegate?.dataReceived(cars: cars)
                 }
@@ -58,24 +57,6 @@ extension WaitingViewModel {
                 let errorMessage = error.localizedDescription
                 DispatchQueue.main.async {
                     sSelf.viewDelegate?.showError(text: errorMessage)
-                }
-            }
-        }
-    }
-    
-    func fetchImages() {
-        for car in cars! {
-            var carViewData = CarViewData(car: car)
-            apiClient.fetchImage(from: carViewData.carImageNativeUrl) {
-                [weak self]
-                (image) in
-                guard let sSelf = self else { return }
-                if let image = image {
-                    carViewData.uiImage = image
-                    sSelf.carViewDatas.append(carViewData)
-                } else {
-                    // TODO
-                    //                    carViewData.uiImage = load default image
                 }
             }
         }
