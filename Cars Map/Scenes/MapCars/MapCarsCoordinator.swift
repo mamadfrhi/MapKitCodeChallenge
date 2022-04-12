@@ -16,16 +16,19 @@ class MapCarsCoordinator: Coordinator {
     private let mapCarsStoryboard = UIStoryboard(name: "MapCars", bundle: nil)
     
     // MARK: VM
+    private var cars: [Car]
     private var mapCarsVM: MapCarsViewModel {
         let mapCarsVM = MapCarsViewModel()
         mapCarsVM.mapCarsCoordinatorDelegate = self
+        mapCarsVM.cars = self.cars
         return mapCarsVM
     }
     
     
     // MARK: Coordinator
-    init(rootTabBarController: UITabBarController) {
+    init(rootTabBarController: UITabBarController, cars: [Car]) {
         // set MapCarsVC to root VC
+        self.cars = cars
         super.init()
         self.rootTabBarController = rootTabBarController
         self.start()
