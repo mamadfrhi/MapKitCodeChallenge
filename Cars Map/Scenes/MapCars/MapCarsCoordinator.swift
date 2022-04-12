@@ -15,24 +15,34 @@ class MapCarsCoordinator: Coordinator {
     
     private let mapCarsStoryboard = UIStoryboard(name: "MapCars", bundle: nil)
     
-//    private let apiClient: Network
-    
     // MARK: VM
+    private var mapCarsVM: MapCarsViewModel {
+        let mapCarsVM = MapCarsViewModel()
+        mapCarsVM.mapCarsCoordinatorDelegate = self
+        return mapCarsVM
+    }
     
     
     // MARK: Coordinator
-    // inject VM and API
     init(rootTabBarController: UITabBarController) {
         // set MapCarsVC to root VC
-        
+        super.init()
+        self.rootTabBarController = rootTabBarController
+        self.start()
+    }
+    
+    override func start() {
         let mapCarsVC = mapCarsStoryboard.instantiateViewController(withIdentifier: "MapCarsVC") as! MapCarsVC
+        mapCarsVC.viewModel = mapCarsVM
         mapCarsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 0)
         
         mapCarsNavigationContrller.setViewControllers([mapCarsVC], animated: true)
         rootTabBarController.setViewControllers([mapCarsNavigationContrller], animated: true)
     }
-    
-    override func start() {
-        print("I'm in MapCarsCoordinator")
+}
+
+extension MapCarsCoordinator: MapCarsViewModelCoordinatorDelegate {
+    func didSelect(car: Car, from controller: UIViewController) {
+        print("I'm in MapCarsCoordinator and received a car using MapCarsVMDelegate")
     }
 }
