@@ -29,6 +29,8 @@
 		87B6E7502804A4700059A1E3 /* MapCarsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6E74F2804A4700059A1E3 /* MapCarsCoordinator.swift */; };
 		87B6E7532804A4C50059A1E3 /* ListCarsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6E7522804A4C50059A1E3 /* ListCarsCoordinator.swift */; };
 		87B6E7572804A5480059A1E3 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6E7562804A5480059A1E3 /* ApiClient.swift */; };
+		87DF2AC02805CFDF00AC89BB /* CarInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DF2ABF2805CFDF00AC89BB /* CarInfoVC.swift */; };
+		87DF2AC42805CFED00AC89BB /* CarInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87DF2AC32805CFED00AC89BB /* CarInfo.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		87B6E74F2804A4700059A1E3 /* MapCarsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCarsCoordinator.swift; sourceTree = "<group>"; };
 		87B6E7522804A4C50059A1E3 /* ListCarsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCarsCoordinator.swift; sourceTree = "<group>"; };
 		87B6E7562804A5480059A1E3 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		87DF2ABF2805CFDF00AC89BB /* CarInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInfoVC.swift; sourceTree = "<group>"; };
+		87DF2AC32805CFED00AC89BB /* CarInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CarInfo.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8753507F2805D5E100EC6E68 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				87DF2AC32805CFED00AC89BB /* CarInfo.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		879EFF312804B7FE00ED0CD0 /* Waiting */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +135,7 @@
 				879EFF312804B7FE00ED0CD0 /* Waiting */,
 				87B6E72428049D760059A1E3 /* MapCars */,
 				87B6E72528049D800059A1E3 /* ListCars */,
+				87DF2ABE2805CFAB00AC89BB /* CarInfo */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -211,6 +224,15 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		87DF2ABE2805CFAB00AC89BB /* CarInfo */ = {
+			isa = PBXGroup;
+			children = (
+				8753507F2805D5E100EC6E68 /* View */,
+				87DF2ABF2805CFDF00AC89BB /* CarInfoVC.swift */,
+			);
+			path = CarInfo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -273,6 +295,7 @@
 				87B6E71328049BE70059A1E3 /* LaunchScreen.storyboard in Resources */,
 				87B6E71028049BE70059A1E3 /* Assets.xcassets in Resources */,
 				87B6E7492804A1310059A1E3 /* ListCars.storyboard in Resources */,
+				87DF2AC42805CFED00AC89BB /* CarInfo.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +323,7 @@
 				87B6E73C28049EF10059A1E3 /* Coordinator.swift in Sources */,
 				87B6E7572804A5480059A1E3 /* ApiClient.swift in Sources */,
 				87A8C5F62805B86A00BF5775 /* VMListCarsAbstractions.swift in Sources */,
+				87DF2AC02805CFDF00AC89BB /* CarInfoVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
