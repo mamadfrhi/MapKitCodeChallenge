@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 class MapCarsViewModel {
     
@@ -19,9 +20,21 @@ class MapCarsViewModel {
     // MARK: Init
     init() {}
     
-    func start() {}
+    func start() {
+        // convert to viewType
+        var carAnnotations: [MKPointAnnotation] = []
+        for car in cars {
+            let carAnnotation = CarViewData(car: car).coordinate
+            carAnnotations.append(carAnnotation)
+        }
+        // call VC
+        viewDelegate?.refreshScreen(with: carAnnotations)
+    }
     
 }
+
+// Implement interface below for MapVM
+
 
 //// MARK: - ViewModelType
 //extension CatsViewModel: CatsViewModelType {

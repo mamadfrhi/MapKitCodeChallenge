@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import MapKit
 
 class MapCarsVC: UIViewController {
     
     // MARK: Outlets
+    @IBOutlet weak var mapView: MKMapView!
     
     
     // MARK: Properties
@@ -24,24 +26,16 @@ class MapCarsVC: UIViewController {
         super.viewDidLoad()
         viewModel.start()
     }
-    
-    // MARK: Setup
-    
-    // MARK: Actions
-    @IBAction func retry(_ sender: Any) {
-        
-    }
 }
 
 // MARK: - ViewModel Delegate
 extension MapCarsVC: MapCarsViewModelViewDelegate {
-    func refreshScreen(with cars: [Car]) {
-        print("refreshScreen functino in MapCarsVC received \(cars.count) cars")
+    func refreshScreen(with annotations: [MKPointAnnotation]) {
+        print("refreshScreen functino in MapCarsVC received \(annotations.count) cars")
+        self.mapView.showAnnotations(annotations, animated: true)
     }
     
     func selected(car: Car) {
         print("selected function in MapCarsVC received \(car) cars")
     }
-    
-    
 }

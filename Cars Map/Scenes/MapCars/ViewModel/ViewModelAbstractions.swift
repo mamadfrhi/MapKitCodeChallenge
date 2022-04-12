@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 // MARK: - ViewModelType
 protocol CatsViewModelType {
@@ -34,6 +35,6 @@ protocol MapCarsViewModelCoordinatorDelegate: class {
 
 // MARK: - ViewModelViewDelegate
 protocol MapCarsViewModelViewDelegate: class {
-    func refreshScreen(with cars: [Car])
+    func refreshScreen(with annotaions: [MKPointAnnotation])
     func selected(car: Car)
 }

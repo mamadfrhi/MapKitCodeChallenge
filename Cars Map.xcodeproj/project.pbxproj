@@ -169,8 +169,8 @@
 		87B6E72A28049DD00059A1E3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				87B6E73F2804A1100059A1E3 /* MapCarsViewModel.swift */,
 				87B6E7402804A1100059A1E3 /* ViewModelAbstractions.swift */,
+				87B6E73F2804A1100059A1E3 /* MapCarsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
