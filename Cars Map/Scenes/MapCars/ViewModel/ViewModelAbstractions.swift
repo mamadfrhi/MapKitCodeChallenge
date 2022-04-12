@@ -9,14 +9,14 @@ import UIKit
 import MapKit
 
 // MARK: - ViewModelType
-protocol CatsViewModelType {
+protocol MapCarsViewModelType {
     
     var viewDelegate: MapCarsViewModelViewDelegate? { get set }
 
 //    // Data Source
 //    func numberOfItems() -> Int
-//
-//    func itemFor(row: Int) -> UITableViewCell
+
+    func viewFor(annotation: MKAnnotation) -> MKAnnotationView?
 //
 //    // Events
 //    func add()
@@ -35,6 +35,6 @@ protocol MapCarsViewModelCoordinatorDelegate: class {
 
 // MARK: - ViewModelViewDelegate
 protocol MapCarsViewModelViewDelegate: class {
-    func refreshScreen(with annotaions: [MKPointAnnotation])
+    func refreshScreen(with annotaions: [CarAnnotation]) // TODO: make it more abstract
     func selected(car: Car)
 }

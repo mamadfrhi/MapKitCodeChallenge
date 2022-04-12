@@ -36,14 +36,12 @@ struct Car: Decodable {
 
 struct CarViewData: CarViewDataType {
     // MARK: custom properties
-    var coordinate: MKPointAnnotation {
-        let annotation = MKPointAnnotation()
-        annotation.title = car.name
+    var coordinate: CLLocationCoordinate2D {
         let coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude),
                                                 longitude: CLLocationDegrees(longitude))
-        annotation.coordinate = coordinate
-        return annotation
+        return coordinate
     }
+    
     var uiImage : UIImage?
     var carImageNativeUrl: URL? {
         return URL(string: car.carImageUrl)

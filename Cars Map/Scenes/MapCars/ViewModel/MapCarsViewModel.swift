@@ -16,61 +16,50 @@ class MapCarsViewModel {
     
     // MARK: Properties
     var cars: [Car] = []
+    // check if it must be weak or not
     
     // MARK: Init
     init() {}
     
     func start() {
-        // convert to viewType
-        var carAnnotations: [MKPointAnnotation] = []
+        // convert cars to annotations
+        var carAnnotations: [CarAnnotation] = []
         for car in cars {
-            let carAnnotation = CarViewData(car: car).coordinate
+            let carViewData = CarViewData(car: car)
+            let carAnnotation = CarAnnotation(coordinate: carViewData.coordinate,
+                                              title: carViewData.name,
+                                              imageUrl: carViewData.carImageUrl)
             carAnnotations.append(carAnnotation)
         }
         // call VC
         viewDelegate?.refreshScreen(with: carAnnotations)
     }
-    
 }
 
 // Implement interface below for MapVM
 
 
-//// MARK: - ViewModelType
-//extension CatsViewModel: CatsViewModelType {
-//
-//    func numberOfItems() -> Int {
-//        return cats.count
-//    }
-//
-//    func itemFor(row: Int) -> UITableViewCell {
-//        let cell = UITableViewCell(style: .value1, reuseIdentifier: "catID")
-//        let catViewData = CatViewData(cat: cats[row])
-//        cell.textLabel?.text = catViewData._id
-//        cell.detailTextLabel?.text = catViewData.createdAt
-//        return cell
-//    }
-//
-//    func add() {
-//        getNewCat()
-//        viewDelegate?.updateScreen()
-//    }
-//
-//    func delete() {
-//        let row = self.viewDelegate?.selectedCatRow()
-//        self.remove(at: row)
-//    }
-//
-//    func didSelectRow(_ row: Int, from controller: UIViewController) {
-//        print("Cat in \(row) selected")
-//        didSelect(cat: cats[row], from: controller)
-//    }
-//
-//    func refreshView() {
-//        start() // to refresh arrays
-//        viewDelegate?.updateScreen()
-//    }
-//}
+// MARK: - ViewModelType
+extension MapCarsViewModel: MapCarsViewModelType {
+    
+    func viewFor(annotation: MKAnnotation) -> MKAnnotationView? {
+        //Handle user location annotation..
+        if annotation.isKind(of: MKUserLocation.self) {
+            return nil  //Default is to let the system handle it.
+        }
+        
+        //Handle non-ImageAnnotations..
+        if !(annotation.isKind(of: CarAnnotation.self)) {
+            return nil  //Default is to let the system handle it.
+        }
+        
+        //Handle CarAnnotation..
+        let carAnnotation = annotation as! CarAnnotation // force unwrap because we checked it above
+        let annotationView = CarAnnotationView(annotation: annotation, reuseIdentifier: "imageAnnotation")
+        annotationView.imageView.downloaded(from: carAnnotation.imageUrl) // Assign related image to it
+        return annotationView
+    }
+}
 
 // MARK: - ViewModelCoordinator
 extension MapCarsViewModel: MapCarsViewModelCoordinatorDelegate {
