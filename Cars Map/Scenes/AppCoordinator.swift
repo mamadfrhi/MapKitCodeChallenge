@@ -50,7 +50,8 @@ extension AppCoordinator {
         mapCarsCoordinator.start()
         
         // second tab
-        let listCarsCoordinator = ListCarsCoordinator(rootTabBarController: rootTabBarController)
+        let listCarsCoordinator = ListCarsCoordinator(rootTabBarController: rootTabBarController,
+                                                      cars: cars)
         self.addChildCoordinator(listCarsCoordinator)
         listCarsCoordinator.start()
     }

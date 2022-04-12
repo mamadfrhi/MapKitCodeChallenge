@@ -14,25 +14,38 @@ class ListCarsCoordinator: Coordinator {
     private var listCarsNavigationContrller = UINavigationController()
     
     private let listCarsStoryboard = UIStoryboard(name: "ListCars", bundle: nil)
-    
-//    private let apiClient: Network
-    
+
     // MARK: VM
-    
+    private var cars: [Car]
+    private var listCarsVM: ListCarsVM {
+        let listCarsVM = ListCarsVM()
+        listCarsVM.ListCarsCoordinatorDelegate = self
+        listCarsVM.cars = self.cars
+        return listCarsVM
+    }
     
     // MARK: Coordinator
-    
-    init(rootTabBarController: UITabBarController) {
-        // set MapCarsVC to root VC
-        
-        let listCarsVC = listCarsStoryboard.instantiateViewController(withIdentifier: "ListCarsVC") as! ListCarsVC
-        listCarsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1) // write a test to check if the tab sequences are correct
-        
-        listCarsNavigationContrller.setViewControllers([listCarsVC], animated: true)
-        rootTabBarController.viewControllers?.append(listCarsNavigationContrller)
+    init(rootTabBarController: UITabBarController, cars: [Car]) {
+        // set ListCarsVC to root VC
+        self.cars = cars
+        super.init()
+        self.rootTabBarController = rootTabBarController
     }
     
     override func start() {
-        print("I'm in ListCarsCoordinator")
+        let listCarsVC = listCarsStoryboard.instantiateViewController(withIdentifier: "ListCarsVC") as! ListCarsVC
+        listCarsVC.viewModel = listCarsVM
+        listCarsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .recents, tag: 1)
+        
+        listCarsNavigationContrller.setViewControllers([listCarsVC], animated: true)
+        rootTabBarController.viewControllers?.append(listCarsNavigationContrller)
+        // it appends to the previously set VC(tab) - in this case - MapCarsVC
+        // write a test to check order of the tabs!
+    }
+}
+
+extension ListCarsCoordinator: ListCarsViewModelCoordinatorDelegate {
+    func didSelect(car: Car, from controller: UIViewController) {
+        print("I'm in ListCarsCoordinator and received a car using MapCarsVMDelegate")
     }
 }
