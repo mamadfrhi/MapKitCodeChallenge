@@ -16,13 +16,24 @@
                     <view key="view" contentMode="scaleToFill" id="Uog-cO-QtX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Jkr-Dv-FbX">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </mapView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Aw9-s9-wOi"/>
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Jkr-Dv-FbX" secondAttribute="bottom" id="1Dy-J2-nFi"/>
+                            <constraint firstItem="Jkr-Dv-FbX" firstAttribute="trailing" secondItem="Aw9-s9-wOi" secondAttribute="trailing" id="9Ve-uM-3gE"/>
+                            <constraint firstItem="Jkr-Dv-FbX" firstAttribute="leading" secondItem="Aw9-s9-wOi" secondAttribute="leading" id="gwm-4B-cGW"/>
+                            <constraint firstItem="Jkr-Dv-FbX" firstAttribute="top" secondItem="Uog-cO-QtX" secondAttribute="top" id="yMS-XQ-GgS"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D7g-lh-y5b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="206" y="183"/>
+            <point key="canvasLocation" x="205.79710144927537" y="182.8125"/>
         </scene>
     </scenes>
     <resources>
