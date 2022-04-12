@@ -44,7 +44,8 @@ final class AppCoordinator: Coordinator { // TabCoordinator
 extension AppCoordinator {
     private func startTabBarControllers(with cars: [Car]) {
         // first tab
-        let mapCarsCoordinator = MapCarsCoordinator(rootTabBarController: rootTabBarController)
+        let mapCarsCoordinator = MapCarsCoordinator(rootTabBarController: rootTabBarController,
+                                                    cars: cars)
         self.addChildCoordinator(mapCarsCoordinator)
         mapCarsCoordinator.start()
         
