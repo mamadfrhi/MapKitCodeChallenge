@@ -11,7 +11,7 @@ import MapKit
 class ListCarsVM {
     
     // MARK: Delegates
-    var ListCarsCoordinatorDelegate: ListCarsViewModelCoordinatorDelegate?
+    var listCarsCoordinatorDelegate: ListCarsViewModelCoordinatorDelegate?
     var viewDelegate: ListCarsViewModelViewDelegate?
     
     // MARK: Properties
@@ -42,6 +42,7 @@ extension ListCarsVM: ListCarsVMType {
     
     func didSelectRow(_ row: Int, from controller: UIViewController) {
         print("row \(row) selected!")
+        didSelect(car: cars[row], from: controller)
     }
     
     func refreshView() {
@@ -52,6 +53,8 @@ extension ListCarsVM: ListCarsVMType {
 }
 
 // MARK: - ViewModelCoordinator
-extension MapCarsVM: ListCarsViewModelCoordinatorDelegate {
-    
+extension ListCarsVM: ListCarsViewModelCoordinatorDelegate {
+    func didSelect(car: Car, from controller: UIViewController) {
+        listCarsCoordinatorDelegate?.didSelect(car: car, from: controller)
+    }
 }

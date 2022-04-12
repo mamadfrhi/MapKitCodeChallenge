@@ -19,7 +19,7 @@ class ListCarsCoordinator: Coordinator {
     private var cars: [Car]
     private var listCarsVM: ListCarsVM {
         let listCarsVM = ListCarsVM()
-        listCarsVM.ListCarsCoordinatorDelegate = self
+        listCarsVM.listCarsCoordinatorDelegate = self
         listCarsVM.cars = self.cars
         return listCarsVM
     }
@@ -44,8 +44,21 @@ class ListCarsCoordinator: Coordinator {
     }
 }
 
+// MARK: - ViewModel Callbacks
 extension ListCarsCoordinator: ListCarsViewModelCoordinatorDelegate {
     func didSelect(car: Car, from controller: UIViewController) {
         print("I'm in ListCarsCoordinator and received a car using MapCarsVMDelegate")
+        showCarInfo(of: car)
+    }
+}
+
+//MARK: Navigation
+extension ListCarsCoordinator {
+    private func showCarInfo(of car: Car) { // it shows a modal page
+        let carInfoSB = UIStoryboard.init(name: "CarInfo", bundle: nil)
+        let carInfoVC = carInfoSB.instantiateViewController(withIdentifier: "CarInfoVC") as! CarInfoVC
+        carInfoVC.car = car
+        listCarsNavigationContrller.present(carInfoVC,
+                                            animated: true, completion: nil)
     }
 }

@@ -7,10 +7,13 @@
 
 import UIKit
 
+// TODO: good idea: calculate distance of the car from the user's
+// current location and show it here to the user!
+
 class CarInfoVC: UIViewController {
     
     //MARK: Properties
-    let car: Car? = nil // write a test to make sure always it's not nil after showing
+    var car: Car? = nil // write a test to make sure always it's not nil after showing
     
     //MARK: Outlets
     @IBOutlet weak var gasImageView: UIImageView!
@@ -21,7 +24,7 @@ class CarInfoVC: UIViewController {
     // MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setup()
     }
     
     
@@ -31,7 +34,7 @@ class CarInfoVC: UIViewController {
         // Fuel module
         self.gasImageView.image = gasImageView.image?.fill(with: .red,
                                                            percentage: CGFloat(car.fuelLevel))
-        fuelPercentage.text = "\(car.fuelLevel * 100)%"
+        fuelPercentage.text = "\(Int(car.fuelLevel * 100))%"
         // TODO: it's a good idea to make a module from
         // percentage label and the gas icon and re-use it everywhere
         
@@ -45,10 +48,9 @@ class CarInfoVC: UIViewController {
     
     private func makeText(car: Car) -> String {
         let words = [
-            car.modelName,
             car.name,
             car.make,
-            car.color
+            car.modelName
         ]
         var str = ""
         for word in words {
