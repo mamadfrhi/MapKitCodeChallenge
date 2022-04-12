@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Map CarsVC-->
+        <!--Map-->
         <scene sceneID="Xdn-X7-zKj">
             <objects>
-                <viewController storyboardIdentifier="MapCarsVC" id="GTb-wt-Qmd" customClass="MapCarsVC" customModule="Cars_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapCarsVC" title="Map" id="GTb-wt-Qmd" customClass="MapCarsVC" customModule="Cars_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uog-cO-QtX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

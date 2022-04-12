@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--List CarsVC-->
+        <!--List-->
         <scene sceneID="T06-k6-6yW">
             <objects>
-                <viewController storyboardIdentifier="ListCarsVC" id="9BM-V0-ks8" customClass="ListCarsVC" customModule="Cars_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ListCarsVC" title="List" id="9BM-V0-ks8" customClass="ListCarsVC" customModule="Cars_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="heO-yc-vDy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
