@@ -14,7 +14,7 @@ class CarAnnotation: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
     
     // customs
-    private var car : Car
+    var car : Car
     
     var carImageUrl: String {
         return car.carImageUrl

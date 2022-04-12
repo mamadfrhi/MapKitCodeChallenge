@@ -53,7 +53,7 @@ extension MapCarsVC: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let annotationTitle = view.annotation?.title {
             print("User tapped on annotation with title: \(annotationTitle!)")
-            viewModel.didSelect(view, from: mapView)
+            viewModel.didSelectAnnotation(view: view, from: mapView)
         }
     }
 }

@@ -56,7 +56,9 @@ extension MapCarsVM: MapCarsVMType {
         //Handle CarAnnotation..
         let carAnnotation = annotation as! CarAnnotation // force unwrap because we checked it above
         let carAnnotationView = CarAnnotationView(annotation: annotation, reuseIdentifier: "imageAnnotation")
-        carAnnotationView.imageView.downloaded(from: carAnnotation.carImageUrl) // Assign related image to it
+        carAnnotationView.imageView.downloaded(from: carAnnotation.carImageUrl)
+        carAnnotationView.carData = carAnnotation.car
+        // 
         return carAnnotationView
     }
     
