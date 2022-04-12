@@ -26,9 +26,8 @@ class MapCarsVM {
         var carAnnotations: [CarAnnotation] = []
         for car in cars {
             let carViewData = CarViewData(car: car)
-            let carAnnotation = CarAnnotation(coordinate: carViewData.coordinate,
-                                              title: carViewData.name,
-                                              imageUrl: carViewData.carImageUrl)
+            let carAnnotation = CarAnnotation(car: car,
+                                              coordinate: carViewData.coordinate)
             carAnnotations.append(carAnnotation)
         }
         // call VC
@@ -42,6 +41,7 @@ class MapCarsVM {
 // MARK: - ViewModelType
 extension MapCarsVM: MapCarsVMType {
     
+    // DataSource
     func viewFor(annotation: MKAnnotation) -> MKAnnotationView? {
         //Handle user location annotation..
         if annotation.isKind(of: MKUserLocation.self) {
@@ -55,17 +55,22 @@ extension MapCarsVM: MapCarsVMType {
         
         //Handle CarAnnotation..
         let carAnnotation = annotation as! CarAnnotation // force unwrap because we checked it above
-        let annotationView = CarAnnotationView(annotation: annotation, reuseIdentifier: "imageAnnotation")
-        annotationView.imageView.downloaded(from: carAnnotation.imageUrl) // Assign related image to it
-        return annotationView
+        let carAnnotationView = CarAnnotationView(annotation: annotation, reuseIdentifier: "imageAnnotation")
+        carAnnotationView.imageView.downloaded(from: carAnnotation.carImageUrl) // Assign related image to it
+        return carAnnotationView
+    }
+    
+    // Events
+    func didSelectAnnotation(view: MKAnnotationView, from: MKMapView) {
+        // go to show modal page
+        didSelect(view, from: from)
     }
 }
 
 // MARK: - ViewModelCoordinator
 extension MapCarsVM: MapCarsViewModelCoordinatorDelegate {
-    func didSelect(car: Car, from controller: UIViewController) {
-        mapCarsCoordinatorDelegate?.didSelect(car: car,
-                                              from: controller)
-        // It'll open CarsDetail VC
+    func didSelect(_ annotationView: MKAnnotationView, from mapView: MKMapView) {
+        guard let carAnnotationView = annotationView as? CarAnnotationView else { return }
+        mapCarsCoordinatorDelegate?.didSelect(carAnnotationView, from: mapView)
     }
 }

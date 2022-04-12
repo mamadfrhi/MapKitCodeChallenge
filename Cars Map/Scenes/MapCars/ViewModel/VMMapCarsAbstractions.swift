@@ -13,24 +13,17 @@ protocol MapCarsVMType {
     
     var viewDelegate: MapCarsViewModelViewDelegate? { get set }
 
-//    // Data Source
-//    func numberOfItems() -> Int
-
+    // Data Source
     func viewFor(annotation: MKAnnotation) -> MKAnnotationView?
-//
-//    // Events
-//    func add()
-//
-//    func delete()
-//
-//    func didSelectRow(_ row: Int, from controller: UIViewController)
-//
+
+    // Events
+    func didSelectAnnotation(view: MKAnnotationView, from: MKMapView)
 //    func refreshView()
 }
 
 // MARK: - ViewModelCoordinator(delegate)
 protocol MapCarsViewModelCoordinatorDelegate: class {
-    func didSelect(car: Car, from controller: UIViewController)
+    func didSelect(_ annotationView: MKAnnotationView, from mapView: MKMapView)
 }
 
 // MARK: - ViewModelViewDelegate

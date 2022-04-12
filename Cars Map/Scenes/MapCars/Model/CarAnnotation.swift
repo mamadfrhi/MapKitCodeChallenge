@@ -7,14 +7,23 @@
 
 import MapKit
 
-class CarAnnotation : NSObject, MKAnnotation {
-    var coordinate: CLLocationCoordinate2D
+class CarAnnotation: NSObject, MKAnnotation {
+    // default
     var title: String?
-    var imageUrl: String
-
-    init(coordinate: CLLocationCoordinate2D, title: String, imageUrl: String) {
+    var subtitle: String?
+    var coordinate: CLLocationCoordinate2D
+    
+    // customs
+    private var car : Car
+    
+    var carImageUrl: String {
+        return car.carImageUrl
+    }
+    
+    init(car: Car, coordinate: CLLocationCoordinate2D) {
         self.coordinate = coordinate
-        self.title = title
-        self.imageUrl = imageUrl
+        self.title = car.modelName
+        self.subtitle = car.name
+        self.car = car
     }
 }

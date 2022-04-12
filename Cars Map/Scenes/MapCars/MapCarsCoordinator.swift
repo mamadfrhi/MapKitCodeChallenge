@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 class MapCarsCoordinator: Coordinator {
     
@@ -44,8 +45,24 @@ class MapCarsCoordinator: Coordinator {
     }
 }
 
+// MARK: - ViewModel Callbacks
 extension MapCarsCoordinator: MapCarsViewModelCoordinatorDelegate {
-    func didSelect(car: Car, from controller: UIViewController) {
-        print("I'm in MapCarsCoordinator and received a car using MapCarsVMDelegate")
+    func didSelect(_ annotationView: MKAnnotationView, from mapView: MKMapView) {
+        // TODO: Find a wat to write codes below in the VM
+        guard let carAnnotationView = annotationView as? CarAnnotationView,
+              let carData = carAnnotationView.carData else { return }
+        // it's a custom car data annotation which contains CarData too!
+        showCarInfo(of: carData)
+    }
+}
+
+//MARK: Navigation
+extension MapCarsCoordinator {
+    private func showCarInfo(of car: Car) { // it shows a modal page
+        let carInfoSB = UIStoryboard.init(name: "CarInfo", bundle: nil)
+        let carInfoVC = carInfoSB.instantiateViewController(withIdentifier: "CarInfoVC") as! CarInfoVC
+        carInfoVC.car = car
+        mapCarsNavigationContrller.present(carInfoVC,
+                                           animated: true, completion: nil)
     }
 }

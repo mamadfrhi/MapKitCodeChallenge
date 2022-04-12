@@ -9,6 +9,8 @@ import MapKit
 
 class CarAnnotationView: MKAnnotationView {
     var imageView: UIImageView!
+    // TODO: It's not a good place to encode data!
+    var carData: Car?
     
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)

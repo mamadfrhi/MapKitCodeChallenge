@@ -43,8 +43,17 @@ extension MapCarsVC: MapCarsViewModelViewDelegate {
 
 //MARK: Map Delegate
 extension MapCarsVC: MKMapViewDelegate {
+    // annotation view
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let annView = viewModel.viewFor(annotation: annotation)
         return annView
+    }
+    
+    // didSelect Event
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let annotationTitle = view.annotation?.title {
+            print("User tapped on annotation with title: \(annotationTitle!)")
+            viewModel.didSelect(view, from: mapView)
+        }
     }
 }
