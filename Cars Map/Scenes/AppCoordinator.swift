@@ -11,11 +11,11 @@ import UIKit
 final class AppCoordinator: Coordinator { // TabCoordinator
     
     // MARK: Properties
-    let window: UIWindow?
+    private let window: UIWindow?
     
-    var rootTabBarController = UITabBarController()
+    private var rootTabBarController = UITabBarController()
     
-    var apiClient: Network = {
+    private var apiClient: Network = {
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = ["Content-Type": "application/json; charset=utf-8"]
         let apiClient = ApiClient(configuration: configuration)
@@ -23,8 +23,8 @@ final class AppCoordinator: Coordinator { // TabCoordinator
     }()
     
     // MARK: Child Coordinators
-    weak var mapCarsCoordinator: Coordinator?
-    weak var listCarsCoordinator: Coordinator?
+    private weak var mapCarsCoordinator: Coordinator?
+    private weak var listCarsCoordinator: Coordinator?
     
     init(window: UIWindow?) {
         self.window = window
@@ -68,8 +68,10 @@ extension AppCoordinator {
 // MARK: AppCoordinator Delegate
 extension AppCoordinator: AppCoordinatorDelegate{
     func dataReceived(cars: [Car]) {
-        print("I'm in AppCoordinator and received:\n:", cars)
+        print("\nI'm in AppCoordinator and received \(cars.count) cars.")
         // close WaitingVC
+        self.window?.rootViewController = rootTabBarController
         // start tabbars
+        startTabBarControllers(with: cars)
     }
 }

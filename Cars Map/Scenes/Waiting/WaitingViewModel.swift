@@ -19,7 +19,11 @@ class WaitingViewModel: WaitingViewModelType {
     var cars : [Car]? {
         didSet {
             if let cars = cars {
-                appCoordinatorDelegate?.dataReceived(cars: cars)
+                DispatchQueue.main.async {
+                    // because it's called from background thread
+                    // and coordinatorDelegate will have view related functinos
+                    self.appCoordinatorDelegate?.dataReceived(cars: cars)
+                }
             }
         }
     }
