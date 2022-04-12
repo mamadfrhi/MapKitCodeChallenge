@@ -5,6 +5,20 @@
 //  Created by iMamad on 4/11/22.
 //
 
+import MapKit
+import CoreLocation
+
+protocol CarViewDataType {
+    var id: String { get }
+    var modelName: String { get }
+    var name: String { get }
+    var make: String { get }
+    var color: String { get }
+    var fuelLevel: Float { get }
+    var latitude: Float { get }
+    var longitude: Float { get }
+    var carImageUrl: String { get }
+}
 
 struct Car: Decodable {
     let id: String
@@ -16,4 +30,60 @@ struct Car: Decodable {
     let latitude: Float
     let longitude: Float
     let carImageUrl: String
+}
+
+
+
+struct CarViewData: CarViewDataType {
+    // MARK: custom properties
+    var coordinate: MKPointAnnotation {
+        let annotation = MKPointAnnotation()
+        annotation.title = car.name
+        let coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude),
+                                                longitude: CLLocationDegrees(longitude))
+        annotation.coordinate = coordinate
+        return annotation
+    }
+    
+    // MARK: properties
+    var id: String {
+        return car.id
+    }
+    
+    var modelName: String{
+        return car.modelName
+    }
+    
+    var name: String{
+        return car.name
+    }
+    
+    var make: String{
+        return car.make
+    }
+    
+    var color: String{
+        return car.color
+    }
+    
+    var fuelLevel: Float{
+        return car.fuelLevel
+    }
+    
+    var latitude: Float{
+        return car.latitude
+    }
+    
+    var longitude: Float{
+        return car.longitude
+    }
+    
+    var carImageUrl: String {
+        return car.carImageUrl
+    }
+    
+    // MARK: Init
+    private let car: Car
+    
+    init(car: Car) { self.car = car }
 }
