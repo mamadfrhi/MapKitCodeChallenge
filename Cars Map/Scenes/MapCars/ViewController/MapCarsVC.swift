@@ -15,7 +15,7 @@ class MapCarsVC: UIViewController {
     
     
     // MARK: Properties
-    var viewModel: MapCarsViewModel! {
+    var viewModel: MapCarsVM! {
         didSet {
             viewModel.viewDelegate = self
         }

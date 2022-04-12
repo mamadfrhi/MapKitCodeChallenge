@@ -59,7 +59,7 @@ extension AppCoordinator {
     private func startWaitingVC() {
         let waitingStoryBoard = UIStoryboard.init(name: "Waiting", bundle: nil)
         let waitingVC = waitingStoryBoard.instantiateViewController(withIdentifier: "WaitingVC") as! WaitingVC
-        let waitingVM = WaitingViewModel(apiClient: apiClient)
+        let waitingVM = WaitingVM(apiClient: apiClient)
         waitingVM.appCoordinatorDelegate = self
         waitingVC.viewModel = waitingVM
         window?.rootViewController = waitingVC

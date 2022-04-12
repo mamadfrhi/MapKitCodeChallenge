@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 
 // MARK: - ViewModelType
-protocol MapCarsViewModelType {
+protocol MapCarsVMType {
     
     var viewDelegate: MapCarsViewModelViewDelegate? { get set }
 

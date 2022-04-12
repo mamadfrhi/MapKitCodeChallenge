@@ -15,7 +15,7 @@ class WaitingVC: UIViewController {
     @IBOutlet weak var retryBtn: UIButton!
     
     // MARK: Properties
-    var viewModel: WaitingViewModel! {
+    var viewModel: WaitingVM! {
         didSet {
             viewModel.viewDelegate = self
         }

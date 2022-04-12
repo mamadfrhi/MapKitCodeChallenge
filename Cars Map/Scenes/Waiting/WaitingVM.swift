@@ -8,7 +8,7 @@
 import Foundation
 
 
-class WaitingViewModel: WaitingViewModelType {
+class WaitingVM: WaitingViewModelType {
     
     // MARK: Properties
     private let apiClient: Network
@@ -38,7 +38,7 @@ class WaitingViewModel: WaitingViewModelType {
 }
 
 // MARK: Network
-extension WaitingViewModel {
+extension WaitingVM {
     func fetch() {
         apiClient.fetch {
             [weak self]

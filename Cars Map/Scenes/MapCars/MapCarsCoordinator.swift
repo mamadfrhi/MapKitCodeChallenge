@@ -17,8 +17,8 @@ class MapCarsCoordinator: Coordinator {
     
     // MARK: VM
     private var cars: [Car]
-    private var mapCarsVM: MapCarsViewModel {
-        let mapCarsVM = MapCarsViewModel()
+    private var mapCarsVM: MapCarsVM {
+        let mapCarsVM = MapCarsVM()
         mapCarsVM.mapCarsCoordinatorDelegate = self
         mapCarsVM.cars = self.cars
         return mapCarsVM

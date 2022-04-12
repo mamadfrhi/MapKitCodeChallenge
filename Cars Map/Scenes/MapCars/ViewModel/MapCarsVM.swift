@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class MapCarsViewModel {
+class MapCarsVM {
     
     // MARK: Delegates
     var mapCarsCoordinatorDelegate: MapCarsViewModelCoordinatorDelegate?
@@ -40,7 +40,7 @@ class MapCarsViewModel {
 
 
 // MARK: - ViewModelType
-extension MapCarsViewModel: MapCarsViewModelType {
+extension MapCarsVM: MapCarsVMType {
     
     func viewFor(annotation: MKAnnotation) -> MKAnnotationView? {
         //Handle user location annotation..
@@ -62,7 +62,7 @@ extension MapCarsViewModel: MapCarsViewModelType {
 }
 
 // MARK: - ViewModelCoordinator
-extension MapCarsViewModel: MapCarsViewModelCoordinatorDelegate {
+extension MapCarsVM: MapCarsViewModelCoordinatorDelegate {
     func didSelect(car: Car, from controller: UIViewController) {
         mapCarsCoordinatorDelegate?.didSelect(car: car,
                                               from: controller)
