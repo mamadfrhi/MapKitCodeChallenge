@@ -45,7 +45,7 @@ extension MapCarsVC: MapCarsViewModelViewDelegate {
 extension MapCarsVC: MKMapViewDelegate {
     // annotation view
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let annView = viewModel.viewFor(annotation: annotation)
+        let annView = viewModel.viewFor(annotation: annotation, on: mapView)
         return annView
     }
     

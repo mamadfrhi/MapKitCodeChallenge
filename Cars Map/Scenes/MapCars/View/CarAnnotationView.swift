@@ -8,28 +8,35 @@
 import MapKit
 
 class CarAnnotationView: MKAnnotationView {
-    var imageView: UIImageView!
-    // TODO: It's not a good place to encode data!
-    var carData: Car?
     
-    override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
-        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-        
-        self.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
-        self.imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 70, height: 70))
-        self.addSubview(self.imageView)
-        
-        self.imageView.layer.cornerRadius = 5.0
-        self.imageView.layer.masksToBounds = true
-    }
-    
+    // MARK: Properties
+    // default
     override var image: UIImage? {
         get { return self.imageView.image }
         
         set { self.imageView.image = newValue }
     }
+    // customs
+    var imageView: UIImageView!
+    var carData: Car?
     
+    
+    // MARK: Init
+    // custom
+    init(carData: Car?, annotation: MKAnnotation?, reuseIdentifier: String?) {
+        self.carData = carData
+        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+        
+        self.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
+        self.imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 70, height: 70))
+        self.addSubview(self.imageView)
+    }
+    // defatults
+    override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
+        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+    }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }

@@ -26,7 +26,7 @@ class MapCarsVM {
         var carAnnotations: [CarAnnotation] = []
         for car in cars {
             let carViewData = CarViewData(car: car)
-            let carAnnotation = CarAnnotation(car: car,
+            let carAnnotation = CarAnnotation(carData: car,
                                               coordinate: carViewData.coordinate)
             carAnnotations.append(carAnnotation)
         }
@@ -42,23 +42,31 @@ class MapCarsVM {
 extension MapCarsVM: MapCarsVMType {
     
     // DataSource
-    func viewFor(annotation: MKAnnotation) -> MKAnnotationView? {
+    func viewFor(annotation: MKAnnotation, on mapView: MKMapView) -> MKAnnotationView? {
         //Handle user location annotation..
         if annotation.isKind(of: MKUserLocation.self) {
             return nil  //Default is to let the system handle it.
         }
         
-        //Handle non-ImageAnnotations..
+        //Handle non-CarAnnotations..
         if !(annotation.isKind(of: CarAnnotation.self)) {
             return nil  //Default is to let the system handle it.
         }
         
         //Handle CarAnnotation..
+        // too keep code base clean you can remove reuse too.
         let carAnnotation = annotation as! CarAnnotation // force unwrap because we checked it above
-        let carAnnotationView = CarAnnotationView(annotation: annotation, reuseIdentifier: "imageAnnotation")
-        carAnnotationView.imageView.downloaded(from: carAnnotation.carImageUrl)
-        carAnnotationView.carData = carAnnotation.car
-        // 
+        let carData = carAnnotation.carData
+        // start to make annotationVIEW
+        var carAnnotationView: CarAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: "carAnnotationView") as? CarAnnotationView
+        
+        if carAnnotationView == nil {
+            carAnnotationView = CarAnnotationView(carData: carData,
+                                                  annotation: annotation,
+                                                  reuseIdentifier: "carAnnotationView")
+            carAnnotationView!.imageView.downloaded(from: carData.carImageUrl)
+        }
+        
         return carAnnotationView
     }
     
