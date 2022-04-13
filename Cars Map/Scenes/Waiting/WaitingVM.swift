@@ -11,7 +11,7 @@ import Foundation
 class WaitingVM: WaitingViewModelType {
     
     // MARK: Properties
-    private let apiClient: Network
+    private weak var apiClient: Network?
     // delegates
     var appCoordinatorDelegate: AppCoordinatorDelegate?
     var viewDelegate: WaitingViewModelViewDelegate?
@@ -36,7 +36,7 @@ class WaitingVM: WaitingViewModelType {
 // MARK: Network
 extension WaitingVM {
     func fetch() {
-        apiClient.fetch {
+        apiClient?.fetch {
             [weak self]
             (result) in
             guard let sSelf = self else { return }

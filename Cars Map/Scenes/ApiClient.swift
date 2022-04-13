@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol Network {
+protocol Network: class {
     func fetch(completionHandler: @escaping (Result<Any?, Error>) -> ())
 }
 
