@@ -35,7 +35,9 @@ class MapCarsCoordinator: Coordinator {
     override func start() {
         let mapCarsVC = mapCarsStoryboard.instantiateViewController(withIdentifier: "MapCarsVC") as! MapCarsVC
         mapCarsVC.viewModel = mapCarsVM
-        mapCarsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 0)
+        let tabBar = UITabBarItem(tabBarSystemItem: .downloads, tag: 0)
+        tabBar.badgeValue = "\(cars.count)"
+        mapCarsVC.tabBarItem = tabBar
         
         mapCarsNavigationContrller.setViewControllers([mapCarsVC], animated: true)
         rootTabBarController.setViewControllers([mapCarsNavigationContrller], animated: true)
