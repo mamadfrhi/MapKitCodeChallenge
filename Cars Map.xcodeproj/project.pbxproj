@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		87296F2D280722390094D59B /* InternetConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87296F2C280722390094D59B /* InternetConnectionManager.swift */; };
+		87296F3A280741FE0094D59B /* Cars_MapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87296F39280741FE0094D59B /* Cars_MapTests.swift */; };
 		879EFF272804AAA000ED0CD0 /* MapCars.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 879EFF262804AAA000ED0CD0 /* MapCars.storyboard */; };
 		879EFF2A2804B17900ED0CD0 /* Waiting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 879EFF292804B17900ED0CD0 /* Waiting.storyboard */; };
 		879EFF2E2804B6F900ED0CD0 /* WaitingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879EFF2D2804B6F900ED0CD0 /* WaitingVC.swift */; };
@@ -34,8 +35,21 @@
 		87DF2AC42805CFED00AC89BB /* CarInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87DF2AC32805CFED00AC89BB /* CarInfo.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		87296F3C280741FE0094D59B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87B6E6FB28049BE60059A1E3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87B6E70228049BE60059A1E3;
+			remoteInfo = "Cars Map";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		87296F2C280722390094D59B /* InternetConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetConnectionManager.swift; sourceTree = "<group>"; };
+		87296F37280741FE0094D59B /* Cars MapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cars MapTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		87296F39280741FE0094D59B /* Cars_MapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cars_MapTests.swift; sourceTree = "<group>"; };
+		87296F3B280741FE0094D59B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		879EFF262804AAA000ED0CD0 /* MapCars.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapCars.storyboard; sourceTree = "<group>"; };
 		879EFF292804B17900ED0CD0 /* Waiting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Waiting.storyboard; sourceTree = "<group>"; };
 		879EFF2D2804B6F900ED0CD0 /* WaitingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingVC.swift; sourceTree = "<group>"; };
@@ -65,6 +79,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		87296F34280741FE0094D59B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		87B6E70028049BE60059A1E3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -75,6 +96,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		87296F38280741FE0094D59B /* Cars MapTests */ = {
+			isa = PBXGroup;
+			children = (
+				87296F39280741FE0094D59B /* Cars_MapTests.swift */,
+				87296F3B280741FE0094D59B /* Info.plist */,
+			);
+			path = "Cars MapTests";
+			sourceTree = "<group>";
+		};
 		879EFF312804B7FE00ED0CD0 /* Waiting */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				87B6E70528049BE60059A1E3 /* Cars Map */,
+				87296F38280741FE0094D59B /* Cars MapTests */,
 				87B6E70428049BE60059A1E3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -105,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				87B6E70328049BE60059A1E3 /* Cars Map.app */,
+				87296F37280741FE0094D59B /* Cars MapTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -231,6 +263,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		87296F36280741FE0094D59B /* Cars MapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87296F40280741FE0094D59B /* Build configuration list for PBXNativeTarget "Cars MapTests" */;
+			buildPhases = (
+				87296F33280741FE0094D59B /* Sources */,
+				87296F34280741FE0094D59B /* Frameworks */,
+				87296F35280741FE0094D59B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				87296F3D280741FE0094D59B /* PBXTargetDependency */,
+			);
+			name = "Cars MapTests";
+			productName = "Cars MapTests";
+			productReference = 87296F37280741FE0094D59B /* Cars MapTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		87B6E70228049BE60059A1E3 /* Cars Map */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 87B6E71728049BE70059A1E3 /* Build configuration list for PBXNativeTarget "Cars Map" */;
@@ -257,6 +307,10 @@
 				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					87296F36280741FE0094D59B = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 87B6E70228049BE60059A1E3;
+					};
 					87B6E70228049BE60059A1E3 = {
 						CreatedOnToolsVersion = 12.2;
 					};
@@ -276,11 +330,19 @@
 			projectRoot = "";
 			targets = (
 				87B6E70228049BE60059A1E3 /* Cars Map */,
+				87296F36280741FE0094D59B /* Cars MapTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		87296F35280741FE0094D59B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		87B6E70128049BE60059A1E3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -297,6 +359,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		87296F33280741FE0094D59B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87296F3A280741FE0094D59B /* Cars_MapTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		87B6E6FF28049BE60059A1E3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -325,6 +395,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		87296F3D280741FE0094D59B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87B6E70228049BE60059A1E3 /* Cars Map */;
+			targetProxy = 87296F3C280741FE0094D59B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		87B6E71128049BE70059A1E3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -337,6 +415,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		87296F3E280741FE0094D59B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5GB4GGS54M;
+				INFOPLIST_FILE = "Cars MapTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kabok.mohammadfarrahi.Cars-MapTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cars Map.app/Cars Map";
+			};
+			name = Debug;
+		};
+		87296F3F280741FE0094D59B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5GB4GGS54M;
+				INFOPLIST_FILE = "Cars MapTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kabok.mohammadfarrahi.Cars-MapTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cars Map.app/Cars Map";
+			};
+			name = Release;
+		};
 		87B6E71528049BE70059A1E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -496,6 +614,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		87296F40280741FE0094D59B /* Build configuration list for PBXNativeTarget "Cars MapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87296F3E280741FE0094D59B /* Debug */,
+				87296F3F280741FE0094D59B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		87B6E6FE28049BE60059A1E3 /* Build configuration list for PBXProject "Cars Map" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
