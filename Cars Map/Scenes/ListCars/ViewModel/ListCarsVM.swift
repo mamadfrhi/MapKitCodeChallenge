@@ -8,20 +8,21 @@
 import UIKit
 import MapKit
 
+// TIP: It's very thin VM
+// so you can delete this VM
+// and move the codes to VC
+
 class ListCarsVM {
     
     // MARK: Delegates
     var listCarsCoordinatorDelegate: ListCarsViewModelCoordinatorDelegate?
-    var viewDelegate: ListCarsViewModelViewDelegate?
     
     // MARK: Properties
-    var cars: [Car] = []
+    private var cars: [Car] = []
     // check if it must be weak or not
     
     // MARK: Init
-    init() {}
-    
-    func start() {}
+    init(cars: [Car]) { self.cars = cars }
 }
 
 // Implement interface below for MapVM
@@ -41,15 +42,8 @@ extension ListCarsVM: ListCarsVMType {
     }
     
     func didSelectRow(_ row: Int, from controller: UIViewController) {
-        print("row \(row) selected!")
         didSelect(car: cars[row], from: controller)
     }
-    
-    func refreshView() {
-        viewDelegate?.refreshScreen(with: cars)
-    }
-    
-    
 }
 
 // MARK: - ViewModelCoordinator

@@ -9,22 +9,13 @@ import UIKit
 
 class ListCarsVC: UIViewController {
     
-    
     // MARK: Properties
-    var viewModel: ListCarsVM! {
-        didSet {
-            viewModel.viewDelegate = self
-        }
-    }
+    var viewModel: ListCarsVM! // write a test to test injection of this property
     
     // MARK: Outlets
     @IBOutlet weak var tableViewCars: UITableView!
     
     // MARK: UIViewController
-    override func loadView() {
-        super.loadView()
-        viewModel.start()
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -38,8 +29,6 @@ class ListCarsVC: UIViewController {
         tableViewCars.delegate = self
         tableViewCars.dataSource = self
     }
-
-    // MARK: Actions
 }
 
 // MARK: - TableView Delegate & DataSource
@@ -55,16 +44,4 @@ extension ListCarsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.didSelectRow(indexPath.row, from: self)
     }
-}
-
-// MARK: - ViewModel Delegate
-extension ListCarsVC: ListCarsViewModelViewDelegate {
-    func refreshScreen(with annotaions: [Car]) {
-        print("ListCarsVC received refreshScreen")
-    }
-    
-    func selected(car: Car) {
-        print("ListCarsVC received selected")
-    }
-    
 }
