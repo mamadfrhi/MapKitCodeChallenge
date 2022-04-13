@@ -14,7 +14,7 @@ protocol MapCarsVMType {
     var viewDelegate: MapCarsViewModelViewDelegate? { get set }
 
     // Data Source
-    func viewFor(annotation: MKAnnotation) -> MKAnnotationView?
+    func viewFor(annotation: MKAnnotation, on mapView: MKMapView) -> MKAnnotationView?
 
     // Events
     func didSelectAnnotation(view: MKAnnotationView, from: MKMapView)

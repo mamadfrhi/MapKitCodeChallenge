@@ -14,16 +14,16 @@ class CarAnnotation: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
     
     // customs
-    var car : Car
+    var carData : Car
     
     var carImageUrl: String {
-        return car.carImageUrl
+        return carData.carImageUrl
     }
     
-    init(car: Car, coordinate: CLLocationCoordinate2D) {
+    init(carData: Car, coordinate: CLLocationCoordinate2D) {
         self.coordinate = coordinate
-        self.title = car.modelName
-        self.subtitle = car.name
-        self.car = car
+        self.title = carData.modelName
+        self.subtitle = carData.name
+        self.carData = carData
     }
 }
