@@ -16,9 +16,7 @@ class WaitingVC: UIViewController {
     
     // MARK: Properties
     var viewModel: WaitingVM! {
-        didSet {
-            viewModel.viewDelegate = self
-        }
+        didSet { viewModel.viewDelegate = self }
     }
     
     // MARK: UIViewController
@@ -27,11 +25,9 @@ class WaitingVC: UIViewController {
         viewModel.start()
     }
     
-    // MARK: Setup
-    
     // MARK: Actions
     @IBAction func retry(_ sender: Any) {
-        self.hideError()
+        hideError()
         viewModel.retry()
     }
 }
@@ -39,14 +35,14 @@ class WaitingVC: UIViewController {
 // MARK: - ViewModel Delegate
 extension WaitingVC: WaitingViewModelViewDelegate {
     func showError(text: String) {
-        self.infoLabel.text = text + " ☹️"
-        self.acitivityIndicator.isHidden = true
-        self.retryBtn.isHidden = false
+        infoLabel.text = text + " ☹️"
+        acitivityIndicator.isHidden = true
+        retryBtn.isHidden = false
     }
     
     func hideError() {
-        self.infoLabel.text = "I'm calling the server, please give me a sec!\n\n📞🌍☺️"
-        self.acitivityIndicator.isHidden = false
-        self.retryBtn.isHidden = true
+        infoLabel.text = "I'm calling the server, please give me a sec!\n\n📞🌍☺️"
+        acitivityIndicator.isHidden = false
+        retryBtn.isHidden = true
     }
 }
