@@ -13,12 +13,9 @@ class MapCarsVC: UIViewController {
     // MARK: Outlets
     @IBOutlet weak var mapView: MKMapView!
     
-    
     // MARK: Properties
     var viewModel: MapCarsVM! {
-        didSet {
-            viewModel.viewDelegate = self
-        }
+        didSet { viewModel.viewDelegate = self }
     }
     
     // MARK: UIViewController
@@ -31,13 +28,8 @@ class MapCarsVC: UIViewController {
 
 // MARK: - ViewModel Delegate
 extension MapCarsVC: MapCarsViewModelViewDelegate {
-    func refreshScreen(with annotations: [CarAnnotation]) {
-        print("refreshScreen functino in MapCarsVC received \(annotations.count) cars")
-        self.mapView.showAnnotations(annotations, animated: true)
-    }
-    
-    func selected(car: Car) {
-        print("selected function in MapCarsVC received \(car) cars")
+    func refreshScreen(with annotations: [MKAnnotation]) {
+        mapView.showAnnotations(annotations, animated: true)
     }
 }
 
@@ -51,9 +43,6 @@ extension MapCarsVC: MKMapViewDelegate {
     
     // didSelect Event
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        if let annotationTitle = view.annotation?.title {
-            print("User tapped on annotation with title: \(annotationTitle!)")
-            viewModel.didSelectAnnotation(view: view, from: mapView)
-        }
+        viewModel.didSelectAnnotation(view: view, from: mapView)
     }
 }

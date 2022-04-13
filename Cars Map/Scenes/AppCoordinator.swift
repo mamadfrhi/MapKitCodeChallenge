@@ -7,7 +7,6 @@
 
 import UIKit
 
-// TODO: Add child coordinators as well
 final class AppCoordinator: Coordinator { // TabCoordinator
     
     // MARK: Properties
@@ -22,13 +21,8 @@ final class AppCoordinator: Coordinator { // TabCoordinator
         return apiClient
     }()
     
-    // MARK: Child Coordinators
-    private weak var mapCarsCoordinator: Coordinator?
-    private weak var listCarsCoordinator: Coordinator?
-    
-    init(window: UIWindow?) {
-        self.window = window
-    }
+    // MARK: Init
+    init(window: UIWindow?) { self.window = window }
     
     override func start() {
         guard let window = window else { return }
@@ -55,7 +49,6 @@ extension AppCoordinator {
         self.addChildCoordinator(listCarsCoordinator)
         listCarsCoordinator.start()
     }
-    
     
     private func startWaitingVC() {
         let waitingStoryBoard = UIStoryboard.init(name: "Waiting", bundle: nil)

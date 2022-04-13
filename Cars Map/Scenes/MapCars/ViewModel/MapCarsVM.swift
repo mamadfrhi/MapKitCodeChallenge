@@ -15,14 +15,19 @@ class MapCarsVM {
     var viewDelegate: MapCarsViewModelViewDelegate?
     
     // MARK: Properties
-    var cars: [Car] = []
-    // check if it must be weak or not
+    private var cars: [Car] = []
     
     // MARK: Init
-    init() {}
+    init(cars: [Car]) { self.cars = cars }
     
     func start() {
         // convert cars to annotations
+        let carAnnotations = convertCarsToannotations(from: cars)
+        // call VC to refresh
+        viewDelegate?.refreshScreen(with: carAnnotations)
+    }
+    
+    private func convertCarsToannotations(from cars: [Car]) -> [CarAnnotation] {
         var carAnnotations: [CarAnnotation] = []
         for car in cars {
             let carViewData = CarViewData(car: car)
@@ -30,13 +35,9 @@ class MapCarsVM {
                                               coordinate: carViewData.coordinate)
             carAnnotations.append(carAnnotation)
         }
-        // call VC
-        viewDelegate?.refreshScreen(with: carAnnotations)
+        return carAnnotations
     }
 }
-
-// Implement interface below for MapVM
-
 
 // MARK: - ViewModelType
 extension MapCarsVM: MapCarsVMType {
@@ -54,7 +55,7 @@ extension MapCarsVM: MapCarsVMType {
         }
         
         //Handle CarAnnotation..
-        // too keep code base clean you can remove reuse too.
+        // too keep code base clean you can remove dequeueReusableAnnotationView too.
         let carAnnotation = annotation as! CarAnnotation // force unwrap because we checked it above
         let carData = carAnnotation.carData
         // start to make annotationVIEW
@@ -73,6 +74,7 @@ extension MapCarsVM: MapCarsVMType {
     // Events
     func didSelectAnnotation(view: MKAnnotationView, from: MKMapView) {
         // go to show modal page
+        // view = CarAnnotation
         didSelect(view, from: from)
     }
 }
@@ -80,7 +82,6 @@ extension MapCarsVM: MapCarsVMType {
 // MARK: - ViewModelCoordinator
 extension MapCarsVM: MapCarsViewModelCoordinatorDelegate {
     func didSelect(_ annotationView: MKAnnotationView, from mapView: MKMapView) {
-        guard let carAnnotationView = annotationView as? CarAnnotationView else { return }
-        mapCarsCoordinatorDelegate?.didSelect(carAnnotationView, from: mapView)
+        mapCarsCoordinatorDelegate?.didSelect(annotationView, from: mapView)
     }
 }

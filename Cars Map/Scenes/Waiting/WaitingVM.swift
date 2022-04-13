@@ -11,7 +11,7 @@ import Foundation
 class WaitingVM: WaitingViewModelType {
     
     // MARK: Properties
-    private let apiClient: Network
+    private weak var apiClient: Network?
     // delegates
     var appCoordinatorDelegate: AppCoordinatorDelegate?
     var viewDelegate: WaitingViewModelViewDelegate?
@@ -28,22 +28,19 @@ class WaitingVM: WaitingViewModelType {
     var carViewDatas: [CarViewData] = [] // write a tests to check count of this array and above one
     
     //MARK: Waiting VM
-    init(apiClient: Network) {
-        self.apiClient = apiClient
-    }
+    init(apiClient: Network) { self.apiClient = apiClient }
     
-    func start() {
-        fetch()
-    }
+    func start() { fetch() }
 }
 
 // MARK: Network
 extension WaitingVM {
     func fetch() {
-        apiClient.fetch {
+        apiClient?.fetch {
             [weak self]
             (result) in
             guard let sSelf = self else { return }
+            
             switch result {
             case .success(let cars):
                 if let cars = cars as? [Car] {
@@ -62,9 +59,7 @@ extension WaitingVM {
         }
     }
     
-    func retry() {
-        fetch()
-    }
+    func retry() { start() }
 }
 
 // MARK: - ViewModelType

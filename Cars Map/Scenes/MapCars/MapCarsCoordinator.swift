@@ -19,20 +19,17 @@ class MapCarsCoordinator: Coordinator {
     // MARK: VM
     private var cars: [Car]
     private var mapCarsVM: MapCarsVM {
-        let mapCarsVM = MapCarsVM()
+        let mapCarsVM = MapCarsVM(cars: self.cars)
         mapCarsVM.mapCarsCoordinatorDelegate = self
-        mapCarsVM.cars = self.cars
         return mapCarsVM
     }
     
     
     // MARK: Coordinator
     init(rootTabBarController: UITabBarController, cars: [Car]) {
-        // set MapCarsVC to root VC
         self.cars = cars
         super.init()
         self.rootTabBarController = rootTabBarController
-        self.start()
     }
     
     override func start() {
@@ -48,10 +45,8 @@ class MapCarsCoordinator: Coordinator {
 // MARK: - ViewModel Callbacks
 extension MapCarsCoordinator: MapCarsViewModelCoordinatorDelegate {
     func didSelect(_ annotationView: MKAnnotationView, from mapView: MKMapView) {
-        // TODO: Find a wat to write codes below in the VM
         guard let carAnnotationView = annotationView as? CarAnnotationView,
               let carData = carAnnotationView.carData else { return }
-        // it's a custom car data annotation which contains CarData too!
         showCarInfo(of: carData)
     }
 }

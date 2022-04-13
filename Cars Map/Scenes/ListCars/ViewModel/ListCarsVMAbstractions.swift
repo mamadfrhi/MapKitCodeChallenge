@@ -10,9 +10,6 @@ import MapKit
 
 // MARK: - ViewModelType
 protocol ListCarsVMType {
-    
-    var viewDelegate: ListCarsViewModelViewDelegate? { get set }
-    
     // Data Source
     func numberOfItems() -> Int
     
@@ -20,8 +17,6 @@ protocol ListCarsVMType {
     
     // Events
     func didSelectRow(_ row: Int, from controller: UIViewController)
-    
-    func refreshView()
 }
 
 // MARK: - ViewModelCoordinator(delegate)
@@ -29,8 +24,9 @@ protocol ListCarsViewModelCoordinatorDelegate: class {
     func didSelect(car: Car, from controller: UIViewController)
 }
 
+
 // MARK: - ViewModelViewDelegate
-protocol ListCarsViewModelViewDelegate: class {
-    func refreshScreen(with annotaions: [Car])
-    func selected(car: Car)
-}
+//protocol ListCarsViewModelViewDelegate: class {
+//    func refreshScreen(with annotaions: [Car])
+//}
+// Just to show the code is sOlid ( open to extension )
