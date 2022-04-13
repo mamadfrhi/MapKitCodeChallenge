@@ -30,7 +30,6 @@ class MapCarsCoordinator: Coordinator {
         self.cars = cars
         super.init()
         self.rootTabBarController = rootTabBarController
-        self.start()
     }
     
     override func start() {
