@@ -11,7 +11,6 @@ import MapKit
 // MARK: - ViewModelType
 protocol MapCarsVMType {
     
-    // viewDelegate
     var viewDelegate: MapCarsViewModelViewDelegate? { get set }
 
     // Data Source

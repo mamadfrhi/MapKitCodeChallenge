@@ -13,7 +13,6 @@ class MapCarsVC: UIViewController {
     // MARK: Outlets
     @IBOutlet weak var mapView: MKMapView!
     
-    
     // MARK: Properties
     var viewModel: MapCarsVM! {
         didSet { viewModel.viewDelegate = self }
@@ -30,7 +29,7 @@ class MapCarsVC: UIViewController {
 // MARK: - ViewModel Delegate
 extension MapCarsVC: MapCarsViewModelViewDelegate {
     func refreshScreen(with annotations: [MKAnnotation]) {
-        self.mapView.showAnnotations(annotations, animated: true)
+        mapView.showAnnotations(annotations, animated: true)
     }
 }
 
