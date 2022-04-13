@@ -40,6 +40,7 @@ extension WaitingVM {
             [weak self]
             (result) in
             guard let sSelf = self else { return }
+            
             switch result {
             case .success(let cars):
                 if let cars = cars as? [Car] {

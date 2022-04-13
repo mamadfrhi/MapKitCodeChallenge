@@ -50,7 +50,6 @@ extension AppCoordinator {
         listCarsCoordinator.start()
     }
     
-    
     private func startWaitingVC() {
         let waitingStoryBoard = UIStoryboard.init(name: "Waiting", bundle: nil)
         let waitingVC = waitingStoryBoard.instantiateViewController(withIdentifier: "WaitingVC") as! WaitingVC

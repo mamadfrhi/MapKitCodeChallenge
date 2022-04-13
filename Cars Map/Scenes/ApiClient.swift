@@ -26,7 +26,8 @@ class ApiClient: Network {
         
         let url = URL(string: "https://cdn.sixt.io/" + "codingtask/" + "cars")!
         let session = URLSession(configuration: configuration)
-        let task = session.dataTask(with: url, completionHandler: { (data, response, error) in
+        let task = session.dataTask(with: url, completionHandler: {
+            (data, response, error) in
             
             guard let httpResponse = response as? HTTPURLResponse else { return }
             let clientError = (400...499).contains(httpResponse.statusCode)
