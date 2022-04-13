@@ -80,7 +80,6 @@ extension MapCarsVM: MapCarsVMType {
 // MARK: - ViewModelCoordinator
 extension MapCarsVM: MapCarsViewModelCoordinatorDelegate {
     func didSelect(_ annotationView: MKAnnotationView, from mapView: MKMapView) {
-        guard let carAnnotationView = annotationView as? CarAnnotationView else { return }
-        mapCarsCoordinatorDelegate?.didSelect(carAnnotationView, from: mapView)
+        mapCarsCoordinatorDelegate?.didSelect(annotationView, from: mapView)
     }
 }
