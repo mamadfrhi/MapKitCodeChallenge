@@ -48,10 +48,8 @@ class MapCarsCoordinator: Coordinator {
 // MARK: - ViewModel Callbacks
 extension MapCarsCoordinator: MapCarsViewModelCoordinatorDelegate {
     func didSelect(_ annotationView: MKAnnotationView, from mapView: MKMapView) {
-        // TODO: Find a wat to write codes below in the VM
         guard let carAnnotationView = annotationView as? CarAnnotationView,
               let carData = carAnnotationView.carData else { return }
-        // it's a custom car data annotation which contains CarData too!
         showCarInfo(of: carData)
     }
 }
