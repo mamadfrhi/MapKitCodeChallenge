@@ -15,14 +15,19 @@ class MapCarsVM {
     var viewDelegate: MapCarsViewModelViewDelegate?
     
     // MARK: Properties
-    var cars: [Car] = []
-    // check if it must be weak or not
+    private var cars: [Car] = []
     
     // MARK: Init
-    init() {}
+    init(cars: [Car]) { self.cars = cars }
     
     func start() {
         // convert cars to annotations
+        let carAnnotations = convertCarsToannotations(from: cars)
+        // call VC to refresh
+        viewDelegate?.refreshScreen(with: carAnnotations)
+    }
+    
+    private func convertCarsToannotations(from cars: [Car]) -> [CarAnnotation] {
         var carAnnotations: [CarAnnotation] = []
         for car in cars {
             let carViewData = CarViewData(car: car)
@@ -30,8 +35,7 @@ class MapCarsVM {
                                               coordinate: carViewData.coordinate)
             carAnnotations.append(carAnnotation)
         }
-        // call VC
-        viewDelegate?.refreshScreen(with: carAnnotations)
+        return carAnnotations
     }
 }
 
@@ -70,6 +74,7 @@ extension MapCarsVM: MapCarsVMType {
     // Events
     func didSelectAnnotation(view: MKAnnotationView, from: MKMapView) {
         // go to show modal page
+        // view = CarAnnotation
         didSelect(view, from: from)
     }
 }

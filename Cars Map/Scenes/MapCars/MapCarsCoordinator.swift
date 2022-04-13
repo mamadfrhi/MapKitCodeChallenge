@@ -19,16 +19,14 @@ class MapCarsCoordinator: Coordinator {
     // MARK: VM
     private var cars: [Car]
     private var mapCarsVM: MapCarsVM {
-        let mapCarsVM = MapCarsVM()
+        let mapCarsVM = MapCarsVM(cars: self.cars)
         mapCarsVM.mapCarsCoordinatorDelegate = self
-        mapCarsVM.cars = self.cars
         return mapCarsVM
     }
     
     
     // MARK: Coordinator
     init(rootTabBarController: UITabBarController, cars: [Car]) {
-        // set MapCarsVC to root VC
         self.cars = cars
         super.init()
         self.rootTabBarController = rootTabBarController
