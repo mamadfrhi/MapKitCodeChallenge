@@ -21,7 +21,9 @@ class ApiClient: Network {
     
     func fetch(completionHandler: @escaping (Result<Any?, Error>) -> ()) {
         
-        //        if !connected() { completionHandler(.failure(CatAPIError.disconnected)) }
+        if !connected() { completionHandler(.failure(CarsAPIError.disconnected)) }
+        
+        
         let url = URL(string: "https://cdn.sixt.io/" + "codingtask/" + "cars")!
         let session = URLSession(configuration: configuration)
         let task = session.dataTask(with: url, completionHandler: { (data, response, error) in
@@ -44,9 +46,9 @@ class ApiClient: Network {
         task.resume()
     }
     
-    //    private func connected() -> Bool { // to the internet
-    //        InternetConnectionManager.shared.isConnectedToNetwork()
-    //    }
+    private func connected() -> Bool { // to the internet
+        InternetConnectionManager.shared.isConnectedToNetwork()
+    }
 }
 
 struct CarsAPIError: Error {
@@ -67,7 +69,7 @@ extension UIImageView {
                 let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
                 let data = data, error == nil,
                 let image = UIImage(data: data)
-                else { return }
+            else { return }
             DispatchQueue.main.async() { [weak self] in
                 self?.image = image
             }

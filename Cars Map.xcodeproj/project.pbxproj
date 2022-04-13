@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		87296F2D280722390094D59B /* InternetConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87296F2C280722390094D59B /* InternetConnectionManager.swift */; };
 		879EFF272804AAA000ED0CD0 /* MapCars.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 879EFF262804AAA000ED0CD0 /* MapCars.storyboard */; };
 		879EFF2A2804B17900ED0CD0 /* Waiting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 879EFF292804B17900ED0CD0 /* Waiting.storyboard */; };
 		879EFF2E2804B6F900ED0CD0 /* WaitingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879EFF2D2804B6F900ED0CD0 /* WaitingVC.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		87296F2C280722390094D59B /* InternetConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetConnectionManager.swift; sourceTree = "<group>"; };
 		879EFF262804AAA000ED0CD0 /* MapCars.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapCars.storyboard; sourceTree = "<group>"; };
 		879EFF292804B17900ED0CD0 /* Waiting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Waiting.storyboard; sourceTree = "<group>"; };
 		879EFF2D2804B6F900ED0CD0 /* WaitingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingVC.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 		87B6E71F28049CEC0059A1E3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				87296F2C280722390094D59B /* InternetConnectionManager.swift */,
 				87B6E70F28049BE70059A1E3 /* Assets.xcassets */,
 				87B6E71128049BE70059A1E3 /* LaunchScreen.storyboard */,
 				87B6E71428049BE70059A1E3 /* Info.plist */,
@@ -302,6 +305,7 @@
 				879EFF332804B85500ED0CD0 /* WaitingVM.swift in Sources */,
 				87A8C5D62805B22000BF5775 /* CarAnnotationView.swift in Sources */,
 				87B6E73D28049EF10059A1E3 /* AppCoordinator.swift in Sources */,
+				87296F2D280722390094D59B /* InternetConnectionManager.swift in Sources */,
 				87B6E7422804A1100059A1E3 /* MapCarsVMAbstractions.swift in Sources */,
 				879EFF2E2804B6F900ED0CD0 /* WaitingVC.swift in Sources */,
 				879EFF362804B95900ED0CD0 /* Car.swift in Sources */,
