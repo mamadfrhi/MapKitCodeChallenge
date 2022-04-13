@@ -35,9 +35,6 @@ class MapCarsVM {
     }
 }
 
-// Implement interface below for MapVM
-
-
 // MARK: - ViewModelType
 extension MapCarsVM: MapCarsVMType {
     
@@ -54,7 +51,7 @@ extension MapCarsVM: MapCarsVMType {
         }
         
         //Handle CarAnnotation..
-        // too keep code base clean you can remove reuse too.
+        // too keep code base clean you can remove dequeueReusableAnnotationView too.
         let carAnnotation = annotation as! CarAnnotation // force unwrap because we checked it above
         let carData = carAnnotation.carData
         // start to make annotationVIEW

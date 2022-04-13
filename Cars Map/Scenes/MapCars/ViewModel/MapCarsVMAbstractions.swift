@@ -18,16 +18,14 @@ protocol MapCarsVMType {
 
     // Events
     func didSelectAnnotation(view: MKAnnotationView, from: MKMapView)
-//    func refreshView()
 }
 
 // MARK: - ViewModelCoordinator(delegate)
-protocol MapCarsViewModelCoordinatorDelegate: class {
+protocol MapCarsViewModelCoordinatorDelegate {
     func didSelect(_ annotationView: MKAnnotationView, from mapView: MKMapView)
 }
 
 // MARK: - ViewModelViewDelegate
-protocol MapCarsViewModelViewDelegate: class {
-    func refreshScreen(with annotaions: [CarAnnotation]) // TODO: make it more abstract
-    func selected(car: Car)
+protocol MapCarsViewModelViewDelegate {
+    func refreshScreen(with annotaions: [MKAnnotation])
 }
