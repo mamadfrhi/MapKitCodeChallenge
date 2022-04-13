@@ -73,14 +73,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8753507F2805D5E100EC6E68 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				87DF2AC32805CFED00AC89BB /* CarInfo.storyboard */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		879EFF312804B7FE00ED0CD0 /* Waiting */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,7 +127,7 @@
 				879EFF312804B7FE00ED0CD0 /* Waiting */,
 				87B6E72428049D760059A1E3 /* MapCars */,
 				87B6E72528049D800059A1E3 /* ListCars */,
-				87DF2ABE2805CFAB00AC89BB /* CarInfo */,
+				87DF2ABE2805CFAB00AC89BB /* CarInfoModal */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -224,13 +216,13 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		87DF2ABE2805CFAB00AC89BB /* CarInfo */ = {
+		87DF2ABE2805CFAB00AC89BB /* CarInfoModal */ = {
 			isa = PBXGroup;
 			children = (
-				8753507F2805D5E100EC6E68 /* View */,
+				87DF2AC32805CFED00AC89BB /* CarInfo.storyboard */,
 				87DF2ABF2805CFDF00AC89BB /* CarInfoVC.swift */,
 			);
-			path = CarInfo;
+			path = CarInfoModal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
