@@ -55,18 +55,18 @@ extension MapCarsVM: MapCarsVMType {
         
         //Handle CarAnnotation..
         // too keep code base clean you can remove reuse too.
-        var view: CarAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: "carAnnotationView") as? CarAnnotationView
-        if view == nil {
-            view = CarAnnotationView(annotation: annotation, reuseIdentifier: "carAnnotationView")
-        }
-        
         let carAnnotation = annotation as! CarAnnotation // force unwrap because we checked it above
-        // make annotationVIEW
         let carData = carAnnotation.carData
-        let carAnnotationView = CarAnnotationView(carData: carData, // write a test to check if it's injected or not!
+        // start to make annotationVIEW
+        var carAnnotationView: CarAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: "carAnnotationView") as? CarAnnotationView
+        
+        if carAnnotationView == nil {
+            carAnnotationView = CarAnnotationView(carData: carData,
                                                   annotation: annotation,
                                                   reuseIdentifier: "carAnnotationView")
-        carAnnotationView.imageView.downloaded(from: carData.carImageUrl)
+            carAnnotationView!.imageView.downloaded(from: carData.carImageUrl)
+        }
+        
         return carAnnotationView
     }
     
