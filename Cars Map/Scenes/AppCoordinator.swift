@@ -37,6 +37,8 @@ final class AppCoordinator: Coordinator { // TabCoordinator
 // MARK: Starts
 extension AppCoordinator {
     private func startTabBarControllers(with cars: [Car]) {
+        
+        configAppAppearance()
         // first tab
         let mapCarsCoordinator = MapCarsCoordinator(rootTabBarController: rootTabBarController,
                                                     cars: cars)
@@ -57,6 +59,25 @@ extension AppCoordinator {
         waitingVM.appCoordinatorDelegate = self
         waitingVC.viewModel = waitingVM
         window?.rootViewController = waitingVC
+    }
+}
+
+//MARK: View Configs
+extension AppCoordinator {
+    private func configTabBarAppearance() {
+        rootTabBarController.tabBar.barTintColor = UIColor(named: "sixt_black")
+        rootTabBarController.tabBar.tintColor = UIColor(named: "sixt_orange")
+        UINavigationBar.appearance().barTintColor = UIColor(named: "sixt_black")
+    }
+    
+    private func configNavigationBarAppearance() {
+        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes = textAttributes
+    }
+    
+    private func configAppAppearance() {
+        configTabBarAppearance()
+        configNavigationBarAppearance()
     }
 }
 
