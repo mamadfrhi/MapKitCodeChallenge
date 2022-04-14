@@ -31,8 +31,7 @@ class ListCarsCoordinator: Coordinator {
     }
     
     override func start() {
-        let listCarsVC = listCarsStoryboard.instantiateViewController(withIdentifier: "ListCarsVC") as! ListCarsVC
-        listCarsVC.viewModel = listCarsVM
+        let listCarsVC = `init_ListCarsVC`(listCarsVM: listCarsVM)
         listCarsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .recents, tag: 1)
         
         listCarsNavigationContrller.setViewControllers([listCarsVC], animated: true)

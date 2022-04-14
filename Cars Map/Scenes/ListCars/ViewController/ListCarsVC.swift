@@ -7,10 +7,20 @@
 
 import UIKit
 
+
+// Factory design pattern
+func `init_ListCarsVC`(listCarsVM: ListCarsVM) -> ListCarsVC {
+    let storyboard = UIStoryboard(name: "ListCars", bundle: nil)
+    let vc = storyboard.instantiateViewController(withIdentifier: "ListCarsVC") as! ListCarsVC
+    // take care of force unwrap above
+    vc.viewModel = listCarsVM
+    return vc
+}
+
 class ListCarsVC: UIViewController {
     
     // MARK: Properties
-    var viewModel: ListCarsVM! // write a test to test injection of this property
+    var viewModel: ListCarsVM!
     
     // MARK: Outlets
     @IBOutlet weak var tableViewCars: UITableView!
