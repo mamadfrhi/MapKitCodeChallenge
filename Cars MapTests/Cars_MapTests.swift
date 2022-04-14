@@ -32,13 +32,13 @@ extension Cars_MapTests {
         
         // reach 1st tab
         let mapNav = rootTabBarController.viewControllers?[0] as? UINavigationController
-        let mapVC = mapNav?.viewControllers.first
+        let mapVC = mapNav?.viewControllers.first as? MapCarsVC
         let mapTitle = mapVC?.title
         XCTAssertEqual(mapTitle, "Map")
         
         // reach 2nd tab
         let listNav = rootTabBarController.viewControllers?[1] as? UINavigationController
-        let listVC = listNav?.viewControllers.first
+        let listVC = listNav?.viewControllers.first as? ListCarsVC
         let listTitle = listVC?.title
         XCTAssertEqual(listTitle, "List")
         
@@ -48,6 +48,12 @@ extension Cars_MapTests {
         let badgeValue = mapVC!.tabBarItem.badgeValue!
         let carsCount = "\(cars.count)"
         XCTAssertEqual(badgeValue, carsCount)
+        
+        // test order of tabs
+        let tabs = rootTabBarController.tabBar.items
+        let tabsCount = tabs?.count
+        let allTabs = 2
+        XCTAssertEqual(tabsCount, allTabs)
     }
     
     func makeRootTabBarAndGive() -> (UITabBarController, [Car]) {
