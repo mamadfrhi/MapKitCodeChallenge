@@ -10,7 +10,7 @@ import MapKit
 
 
 // Factory design pattern
-func `init_MapCarVC`(mapCarsVM: MapCarsVM) -> MapCarsVC? {
+func `init_MapCarsVC`(mapCarsVM: MapCarsVM) -> MapCarsVC? {
     let storyboard = UIStoryboard(name: "MapCars", bundle: nil)
     let vc = storyboard.instantiateViewController(withIdentifier: "MapCarsVC") as? MapCarsVC
     vc?.viewModel = mapCarsVM
