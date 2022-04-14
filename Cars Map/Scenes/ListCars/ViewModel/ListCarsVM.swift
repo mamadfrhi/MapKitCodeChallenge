@@ -37,7 +37,8 @@ extension ListCarsVM: ListCarsVMType {
     func itemFor(row: Int) -> UITableViewCell {
         let cell = UITableViewCell()
         let carViewData = CarViewData(car: cars[row])
-        cell.textLabel?.text = carViewData.name
+        cell.textLabel?.text = carViewData.modelName
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
