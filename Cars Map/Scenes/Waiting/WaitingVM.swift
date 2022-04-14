@@ -25,7 +25,6 @@ class WaitingVM: WaitingViewModelType {
             }
         }
     }
-    var carViewDatas: [CarViewData] = [] // write a tests to check count of this array and above one
     
     //MARK: Waiting VM
     init(apiClient: Network) { self.apiClient = apiClient }
