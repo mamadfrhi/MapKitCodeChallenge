@@ -7,7 +7,17 @@
 
 import UIKit
 
+
 class WaitingVC: UIViewController {
+    
+    //MARK: Factory
+    class func `init`(waitingVM: WaitingVM) -> WaitingVC {
+        let storyboard = UIStoryboard(name: "Waiting", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "WaitingVC") as! WaitingVC
+        // take care of force unwrapping above
+        vc.viewModel = waitingVM
+        return vc
+    }
     
     // MARK: Outlets
     @IBOutlet weak var acitivityIndicator: UIActivityIndicatorView!
