@@ -9,16 +9,16 @@ import UIKit
 import MapKit
 
 
-// Factory design pattern
-func `init_MapCarsVC`(mapCarsVM: MapCarsVM) -> MapCarsVC {
-    let storyboard = UIStoryboard(name: "MapCars", bundle: nil)
-    let vc = storyboard.instantiateViewController(withIdentifier: "MapCarsVC") as! MapCarsVC
-    // take care of force unwrapping above
-    vc.viewModel = mapCarsVM
-    return vc
-}
-
 class MapCarsVC: UIViewController {
+    
+    // MARK: Factory
+    class func `init`(mapCarsVM: MapCarsVM) -> MapCarsVC {
+        let storyboard = UIStoryboard(name: "MapCars", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MapCarsVC") as! MapCarsVC
+        // take care of force unwrapping above
+        vc.viewModel = mapCarsVM
+        return vc
+    }
     
     // MARK: Outlets
     @IBOutlet weak var mapView: MKMapView!

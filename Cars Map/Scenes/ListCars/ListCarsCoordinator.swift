@@ -31,7 +31,8 @@ class ListCarsCoordinator: Coordinator {
     }
     
     override func start() {
-        let listCarsVC = `init_ListCarsVC`(listCarsVM: listCarsVM)
+        
+        let listCarsVC = ListCarsVC.`init`(listCarsVM: listCarsVM)
         let tabBar = UITabBarItem(title: "List", image: UIImage(named: "list"), tag: 0)
         listCarsVC.tabBarItem = tabBar
         

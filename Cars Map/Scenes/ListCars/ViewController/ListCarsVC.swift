@@ -8,16 +8,16 @@
 import UIKit
 
 
-// Factory design pattern
-func `init_ListCarsVC`(listCarsVM: ListCarsVM) -> ListCarsVC {
-    let storyboard = UIStoryboard(name: "ListCars", bundle: nil)
-    let vc = storyboard.instantiateViewController(withIdentifier: "ListCarsVC") as! ListCarsVC
-    // take care of force unwrap above
-    vc.viewModel = listCarsVM
-    return vc
-}
-
 class ListCarsVC: UIViewController {
+   
+    // MARK: Factory
+    class func `init`(listCarsVM: ListCarsVM) -> ListCarsVC {
+        let storyboard = UIStoryboard(name: "ListCars", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ListCarsVC") as! ListCarsVC
+        // take care of force unwrap above
+        vc.viewModel = listCarsVM
+        return vc
+    }
     
     // MARK: Properties
     var viewModel: ListCarsVM!
