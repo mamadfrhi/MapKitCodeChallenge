@@ -11,7 +11,7 @@ import MapKit
 class MapCarsCoordinator: Coordinator {
     
     // MARK: Properties
-    private weak var rootTabBarController: UITabBarController! // write a test for it - Must be injected
+    private weak var rootTabBarController: UITabBarController!
     private var mapCarsNavigationContrller = UINavigationController()
     
     private let mapCarsStoryboard = UIStoryboard(name: "MapCars", bundle: nil)

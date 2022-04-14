@@ -10,7 +10,7 @@ import UIKit
 class ListCarsCoordinator: Coordinator {
     
     // MARK: Properties
-    private weak var rootTabBarController: UITabBarController! // write a test for it - Must be injected
+    private weak var rootTabBarController: UITabBarController!
     private var listCarsNavigationContrller = UINavigationController()
     
     private let listCarsStoryboard = UIStoryboard(name: "ListCars", bundle: nil)
@@ -39,7 +39,6 @@ class ListCarsCoordinator: Coordinator {
         listCarsNavigationContrller.setViewControllers([listCarsVC], animated: true)
         rootTabBarController.viewControllers?.append(listCarsNavigationContrller)
         // why append? it appends to the previously set VC(tab) - in this case - MapCarsVC
-        // write a test to check order of the tabs!
     }
 }
 

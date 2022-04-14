@@ -13,7 +13,7 @@ import UIKit
 class CarInfoVC: UIViewController {
     
     //MARK: Properties
-    var car: Car? = nil // write a test to make sure always it's not nil after showing
+    var car: Car? = nil
     
     //MARK: Outlets
     @IBOutlet weak var gasImageView: UIImageView!
