@@ -32,7 +32,8 @@ class ListCarsCoordinator: Coordinator {
     
     override func start() {
         let listCarsVC = `init_ListCarsVC`(listCarsVM: listCarsVM)
-        listCarsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .recents, tag: 1)
+        let tabBar = UITabBarItem(title: "List", image: UIImage(named: "list"), tag: 0)
+        listCarsVC.tabBarItem = tabBar
         
         listCarsNavigationContrller.setViewControllers([listCarsVC], animated: true)
         rootTabBarController.viewControllers?.append(listCarsNavigationContrller)

@@ -34,7 +34,7 @@ class MapCarsCoordinator: Coordinator {
     
     override func start() {
         let mapCarsVC = `init_MapCarsVC`(mapCarsVM: mapCarsVM)
-        let tabBar = UITabBarItem(tabBarSystemItem: .downloads, tag: 0)
+        let tabBar = UITabBarItem(title: "Map", image: UIImage(named: "map"), tag: 0)
         tabBar.badgeValue = "\(cars.count)"
         mapCarsVC.tabBarItem = tabBar
         
