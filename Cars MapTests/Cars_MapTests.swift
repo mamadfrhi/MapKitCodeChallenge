@@ -95,21 +95,21 @@ extension Cars_MapTests {
         let _ = listCarsVC.view
         
         // - when -
-        let actualVCCell = listCarsVC.tableView(listCarsVC.tableViewCars, cellForRowAt: IndexPath(row: 0, section: 0))
-        let actualVMCell = listCarsVM.itemFor(row: 0)
+        let actual_VC_Cell = listCarsVC.tableView(listCarsVC.tableViewCars, cellForRowAt: IndexPath(row: 0, section: 0))
+        let actual_VM_Cell = listCarsVM.itemFor(row: 0)
         
         // - then -
-        XCTAssertNotNil(actualVCCell)
-        XCTAssertNotNil(actualVMCell)
+        XCTAssertNotNil(actual_VC_Cell)
+        XCTAssertNotNil(actual_VM_Cell)
         
         // text
-        let vcCellText = actualVCCell.textLabel?.text
-        let vmCellText = actualVMCell.textLabel?.text
+        let vcCellText = actual_VC_Cell.textLabel?.text
+        let vmCellText = actual_VM_Cell.textLabel?.text
         XCTAssertEqual(vcCellText, vmCellText)
         
         // accessory type
-        let vcCellAT = actualVCCell.accessoryType
-        let vmCellAT = actualVMCell.accessoryType
+        let vcCellAT = actual_VC_Cell.accessoryType
+        let vmCellAT = actual_VM_Cell.accessoryType
         XCTAssertEqual(vcCellAT, vmCellAT)
     }
 }
