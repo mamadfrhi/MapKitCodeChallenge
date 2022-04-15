@@ -34,14 +34,10 @@ How DO I **respect** the topics below while developing a software:
 
 ## Video 🎥
 
-<iframe
-    width="640"
-    src="https://www.youtube.com/shorts/gnMMv79w8Ew"
-    frameborder="0"
-    allow="autoplay; encrypted-media"
-    allowfullscreen
->
-</iframe>
+https://user-images.githubusercontent.com/28094207/163577294-a9936f27-da63-4405-948a-43333b64a740.mov
+
+
+
 
 
 ### Diagram
