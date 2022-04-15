@@ -25,9 +25,9 @@ class ListCarsCoordinator: Coordinator {
     
     // MARK: Coordinator
     init(rootTabBarController: UITabBarController, cars: [Car]) {
+        self.rootTabBarController = rootTabBarController
         self.cars = cars
         super.init()
-        self.rootTabBarController = rootTabBarController
     }
     
     override func start() {
