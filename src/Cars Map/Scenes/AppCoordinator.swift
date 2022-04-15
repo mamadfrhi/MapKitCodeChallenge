@@ -12,7 +12,7 @@ final class AppCoordinator: Coordinator { // TabCoordinator
     // MARK: Properties
     private let window: UIWindow?
     
-    private var rootTabBarController = UITabBarController()
+    private let rootTabBarController = UITabBarController()
     
     lazy private var apiClient: Network = {
         let configuration = URLSessionConfiguration.default
@@ -61,7 +61,6 @@ extension AppCoordinator {
         let waitingVM = WaitingVM(service: services)
         let waitingVC = WaitingVC.`init`(waitingVM: waitingVM)
         waitingVM.appCoordinatorDelegate = self
-        waitingVC.viewModel = waitingVM
         window?.rootViewController = waitingVC
     }
 }
