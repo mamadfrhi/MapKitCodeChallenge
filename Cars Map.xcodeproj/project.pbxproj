@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		87296F2D280722390094D59B /* InternetConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87296F2C280722390094D59B /* InternetConnectionManager.swift */; };
 		87296F3A280741FE0094D59B /* Cars_MapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87296F39280741FE0094D59B /* Cars_MapTests.swift */; };
+		873847A7280969BF005D79E1 /* AppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873847A6280969BF005D79E1 /* AppServices.swift */; };
 		879EFF272804AAA000ED0CD0 /* MapCars.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 879EFF262804AAA000ED0CD0 /* MapCars.storyboard */; };
 		879EFF2A2804B17900ED0CD0 /* Waiting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 879EFF292804B17900ED0CD0 /* Waiting.storyboard */; };
 		879EFF2E2804B6F900ED0CD0 /* WaitingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879EFF2D2804B6F900ED0CD0 /* WaitingVC.swift */; };
@@ -50,6 +51,7 @@
 		87296F37280741FE0094D59B /* Cars MapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cars MapTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87296F39280741FE0094D59B /* Cars_MapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cars_MapTests.swift; sourceTree = "<group>"; };
 		87296F3B280741FE0094D59B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		873847A6280969BF005D79E1 /* AppServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppServices.swift; path = "Cars Map/Scenes/AppServices.swift"; sourceTree = SOURCE_ROOT; };
 		879EFF262804AAA000ED0CD0 /* MapCars.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapCars.storyboard; sourceTree = "<group>"; };
 		879EFF292804B17900ED0CD0 /* Waiting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Waiting.storyboard; sourceTree = "<group>"; };
 		879EFF2D2804B6F900ED0CD0 /* WaitingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingVC.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				879EFF292804B17900ED0CD0 /* Waiting.storyboard */,
 				879EFF2D2804B6F900ED0CD0 /* WaitingVC.swift */,
 				879EFF322804B85500ED0CD0 /* WaitingVM.swift */,
+				873847A6280969BF005D79E1 /* AppServices.swift */,
 			);
 			path = Waiting;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				87B6E7532804A4C50059A1E3 /* ListCarsCoordinator.swift in Sources */,
 				87B6E73C28049EF10059A1E3 /* Coordinator.swift in Sources */,
 				87B6E7572804A5480059A1E3 /* ApiClient.swift in Sources */,
+				873847A7280969BF005D79E1 /* AppServices.swift in Sources */,
 				87A8C5F62805B86A00BF5775 /* ListCarsVMAbstractions.swift in Sources */,
 				87DF2AC02805CFDF00AC89BB /* CarInfoVC.swift in Sources */,
 			);

@@ -11,7 +11,7 @@ import Foundation
 class WaitingVM: WaitingViewModelType {
     
     // MARK: Properties
-    private weak var apiClient: Network?
+    private weak var appServices: Serviceable?
     // delegates
     var appCoordinatorDelegate: AppCoordinatorDelegate?
     var viewDelegate: WaitingViewModelViewDelegate?
@@ -27,7 +27,7 @@ class WaitingVM: WaitingViewModelType {
     }
     
     //MARK: Waiting VM
-    init(apiClient: Network) { self.apiClient = apiClient }
+    init(service: Serviceable) { self.appServices = service }
     
     func start() { fetch() }
 }
@@ -35,26 +35,31 @@ class WaitingVM: WaitingViewModelType {
 // MARK: Network
 extension WaitingVM {
     func fetch() {
-        apiClient?.fetch {
+        appServices?.fetchCars {
             [weak self]
-            (result) in
+            (cars, error) in
             guard let sSelf = self else { return }
             
-            switch result {
-            case .success(let cars):
-                if let cars = cars as? [Car] {
-                    sSelf.cars = cars
-                }else {
-                    DispatchQueue.main.async {
-                        sSelf.viewDelegate?.showError(text: CarsAPIError.noData.localizedDescription)
-                    }
-                }
-            case .failure(let error):
+            // failure
+            if let error = error {
                 let errorMessage = error.localizedDescription
-                DispatchQueue.main.async {
-                    sSelf.viewDelegate?.showError(text: errorMessage)
-                }
+                sSelf.ShowError(with: errorMessage)
+                return
             }
+            
+            if let cars = cars as? [Car] {
+                // success
+                sSelf.cars = cars
+            }else {
+                // failure
+                sSelf.ShowError(with: CarsAPIError.noData.localizedDescription)
+            }
+        }
+    }
+    
+    private func ShowError(with errorMessage: String) {
+        DispatchQueue.main.async {
+            self.viewDelegate?.showError(text: errorMessage)
         }
     }
     

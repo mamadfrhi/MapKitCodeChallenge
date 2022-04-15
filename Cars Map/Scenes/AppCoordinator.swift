@@ -14,11 +14,16 @@ final class AppCoordinator: Coordinator { // TabCoordinator
     
     private var rootTabBarController = UITabBarController()
     
-    private var apiClient: Network = {
+    lazy private var apiClient: Network = {
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = ["Content-Type": "application/json; charset=utf-8"]
         let apiClient = ApiClient(configuration: configuration)
         return apiClient
+    }()
+    
+    lazy private var services: Serviceable = {
+        let services = AppServices(apiClient: apiClient)
+        return services
     }()
     
     // MARK: Init
@@ -53,7 +58,7 @@ extension AppCoordinator {
     }
     
     private func startWaitingVC() {
-        let waitingVM = WaitingVM(apiClient: apiClient)
+        let waitingVM = WaitingVM(service: services)
         let waitingVC = WaitingVC.`init`(waitingVM: waitingVM)
         waitingVM.appCoordinatorDelegate = self
         waitingVC.viewModel = waitingVM
