@@ -32,5 +32,9 @@ How DO I **respect** the topics below while developing a software:
 * Navigation Controller 🧭
 * Table View 
 
+## Video 🎥
+
+<video src='https://youtube.com/shorts/gnMMv79w8Ew?feature=share' width=180/>
+
 ### Diagram
 You can find the diagram file in the repo and open it in [here](draw.io) 
