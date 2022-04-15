@@ -165,3 +165,4 @@ extension Cars_MapTests {
 // - checking fall-back images of cars
 // - mapkit testing
 // - modal page testing
+// - waiting page and AppServices
