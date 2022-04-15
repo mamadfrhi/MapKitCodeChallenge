@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class ListCarsVC: UIViewController {
    
     // MARK: Factory
@@ -20,7 +19,7 @@ class ListCarsVC: UIViewController {
     }
     
     // MARK: Properties
-    var viewModel: ListCarsVM!
+    private var viewModel: ListCarsVM!
     
     // MARK: Outlets
     @IBOutlet weak var tableViewCars: UITableView!
@@ -48,7 +47,7 @@ extension ListCarsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        viewModel.itemFor(row: indexPath.item)
+        viewModel.itemFor(row: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
