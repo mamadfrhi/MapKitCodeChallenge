@@ -150,10 +150,8 @@ extension Cars_MapTests {
         return [car1, car2]
     }
 
-    func makeMapCarsVC(mapCarsViewModel: MapCarsVM) -> MapCarsVC {
-        let catsStoryboard = UIStoryboard(name: "MapCars", bundle: nil)
-        let mapCarsVC: MapCarsVC = catsStoryboard.instantiateViewController(withIdentifier: "MapCarsVC") as! MapCarsVC
-        mapCarsVC.viewModel = mapCarsViewModel
+    func makeMapCarsVC(mapCarsVM: MapCarsVM) -> MapCarsVC {
+        let mapCarsVC = MapCarsVC.`init`(mapCarsVM: mapCarsVM)
         // Trigger view load and viewDidLoad()
         _ = mapCarsVC.view
         return mapCarsVC

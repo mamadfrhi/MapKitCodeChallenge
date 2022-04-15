@@ -21,10 +21,10 @@ class MapCarsVC: UIViewController {
     }
     
     // MARK: Outlets
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet private weak var mapView: MKMapView!
     
     // MARK: Properties
-    var viewModel: MapCarsVM! {
+    private var viewModel: MapCarsVM! {
         didSet { viewModel.viewDelegate = self }
     }
     

@@ -18,25 +18,20 @@ class CarAnnotationView: MKAnnotationView {
     }
     // customs
     var imageView: UIImageView!
-    var carData: Car?
+    let carData: Car!
     
     
     // MARK: Init
-    // custom
-    init(carData: Car?, annotation: MKAnnotation?, reuseIdentifier: String?) {
+    init(carData: Car?, annotation: MKAnnotation?, reuseIdentifier: String?, desiredWidth: Int) {
         self.carData = carData
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         
-        self.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
-        self.imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 70, height: 70))
+        self.frame = CGRect(x: 0, y: 0, width: desiredWidth, height: desiredWidth)
+        self.imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: desiredWidth, height: desiredWidth))
         self.addSubview(self.imageView)
     }
-    // defatults
-    override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
-        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

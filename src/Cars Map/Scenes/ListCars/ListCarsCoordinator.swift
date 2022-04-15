@@ -11,12 +11,10 @@ class ListCarsCoordinator: Coordinator {
     
     // MARK: Properties
     private weak var rootTabBarController: UITabBarController!
-    private var listCarsNavigationContrller = UINavigationController()
-    
-    private let listCarsStoryboard = UIStoryboard(name: "ListCars", bundle: nil)
+    private let listCarsNavigationContrller = UINavigationController()
     
     // MARK: VM
-    private var cars: [Car]
+    private let cars: [Car]
     private var listCarsVM: ListCarsVM {
         let listCarsVM = ListCarsVM(cars: cars)
         listCarsVM.listCarsCoordinatorDelegate = self

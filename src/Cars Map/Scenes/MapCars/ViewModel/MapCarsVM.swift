@@ -15,7 +15,7 @@ class MapCarsVM {
     var viewDelegate: MapCarsViewModelViewDelegate?
     
     // MARK: Properties
-    private var cars: [Car] = []
+    private let cars: [Car]!
     
     // MARK: Init
     init(cars: [Car]) { self.cars = cars }
@@ -64,8 +64,9 @@ extension MapCarsVM: MapCarsVMType {
         if carAnnotationView == nil {
             carAnnotationView = CarAnnotationView(carData: carData,
                                                   annotation: annotation,
-                                                  reuseIdentifier: "carAnnotationView")
-            carAnnotationView!.imageView.downloaded(from: carData.carImageUrl)
+                                                  reuseIdentifier: "carAnnotationView",
+                                                  desiredWidth: 70)
+            carAnnotationView!.imageView.downloaded(from: carData!.carImageUrl) // take care of force unwrapping
         }
         
         return carAnnotationView

@@ -15,7 +15,7 @@ class MapCarsCoordinator: Coordinator {
     private let mapCarsNavigationContrller = UINavigationController()
     
     // MARK: VM
-    private var cars: [Car]
+    private let cars: [Car]
     private var mapCarsVM: MapCarsVM {
         let mapCarsVM = MapCarsVM(cars: self.cars)
         mapCarsVM.mapCarsCoordinatorDelegate = self

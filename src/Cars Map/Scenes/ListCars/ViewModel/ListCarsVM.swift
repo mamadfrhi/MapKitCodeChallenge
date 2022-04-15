@@ -18,15 +18,12 @@ class ListCarsVM {
     var listCarsCoordinatorDelegate: ListCarsViewModelCoordinatorDelegate?
     
     // MARK: Properties
-    private var cars: [Car] = []
+    private let cars: [Car]!
     // check if it must be weak or not
     
     // MARK: Init
     init(cars: [Car]) { self.cars = cars }
 }
-
-// Implement interface below for MapVM
-
 
 // MARK: - ViewModelType
 extension ListCarsVM: ListCarsVMType {

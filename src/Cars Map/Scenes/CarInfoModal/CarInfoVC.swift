@@ -16,10 +16,10 @@ class CarInfoVC: UIViewController {
     var car: Car? = nil
     
     //MARK: Outlets
-    @IBOutlet weak var gasImageView: UIImageView!
-    @IBOutlet weak var carImageView: UIImageView!
-    @IBOutlet weak var fuelPercentage: UILabel!
-    @IBOutlet weak var infoText: UITextView!
+    @IBOutlet private weak var gasImageView: UIImageView!
+    @IBOutlet private weak var carImageView: UIImageView!
+    @IBOutlet private weak var fuelPercentage: UILabel!
+    @IBOutlet private weak var infoText: UITextView!
     
     // MARK: UIViewController
     override func viewDidLoad() {
