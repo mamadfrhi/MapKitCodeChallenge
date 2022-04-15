@@ -61,16 +61,18 @@ extension Cars_MapTests {
 extension Cars_MapTests {
     func testTableView() {
         
-        // preapre
+        // - given -
         let cars = makeCars()
         let listCarsVM = ListCarsVM(cars: cars)
         let listCarsVC = ListCarsVC.`init`(listCarsVM: listCarsVM)
         let _ = listCarsVC.view
-        let actualFirstCell = listCarsVC.tableView(listCarsVC.tableViewCars, cellForRowAt: IndexPath(item: 0, section: 0))
-        // MARK: Start the test
+        
+        // - when -
+        let actualFirstCell = listCarsVC.tableView(listCarsVC.tableViewCars, cellForRowAt: IndexPath(row: 0, section: 0))
         let cellText = actualFirstCell.textLabel?.text
         let firstCar = cars[0]
         
+        // - then -
         // test cells
         XCTAssertNotNil(actualFirstCell)
         // text
@@ -79,9 +81,9 @@ extension Cars_MapTests {
         XCTAssertEqual(actualFirstCell.accessoryType, .disclosureIndicator)
         
         // table view
-        let carsCountVM = listCarsVM.numberOfItems()
+        let carsCount = cars.count
         let tblViewRows = listCarsVC.tableViewCars.numberOfRows(inSection: 0)
-        XCTAssertEqual(tblViewRows, carsCountVM)
+        XCTAssertEqual(tblViewRows, carsCount)
     }
     
     func testListCarsVM() {
