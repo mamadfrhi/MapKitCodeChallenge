@@ -14,8 +14,14 @@ class Cars_MapTests: XCTestCase {
 
 // MARK: TabController tests
 extension Cars_MapTests {
-    func testVCTitles() {
-        // prepare
+    
+    // TODO: test below violates SRP, cause it tests more than 1 thing (badges and titles etc.)
+    // it'd be great to save rootTabBar and cars in test class
+    // and then separate function test below to several functinos
+    func testTabBarController() {
+        
+        // -- start tab tests --
+        // - given -
         let rootTabBarController = UITabBarController()
         let cars = makeCars()
         
@@ -23,36 +29,38 @@ extension Cars_MapTests {
         let mapCarsCoordinator = MapCarsCoordinator(rootTabBarController: rootTabBarController,
                                                     cars: cars)
         mapCarsCoordinator.start()
-        
         // second tab
         let listCarsCoordinator = ListCarsCoordinator(rootTabBarController: rootTabBarController,
                                                       cars: cars)
         listCarsCoordinator.start()
         
-        // MARK: Start the test
-        // reach 1st tab
+        // - when - 1st tab
         let mapNav = rootTabBarController.viewControllers?[0] as? UINavigationController
         let mapVC = mapNav?.viewControllers.first as? MapCarsVC
         let mapTitle = mapVC?.title
+        // - then - 1st tab
         XCTAssertEqual(mapTitle, "Map")
         
-        // reach 2nd tab
+        // - when - 2nd tab
         let listNav = rootTabBarController.viewControllers?[1] as? UINavigationController
         let listVC = listNav?.viewControllers.first as? ListCarsVC
         let listTitle = listVC?.title
+        // - then - 2nd tab
         XCTAssertEqual(listTitle, "List")
+        // -- end tab tests --
         
         
-        // test badge
-        // violates SRP
+        // - when - badge
         let badgeValue = mapVC!.tabBarItem.badgeValue!
         let carsCount = "\(cars.count)"
+        // - when - then
         XCTAssertEqual(badgeValue, carsCount)
         
-        // test order of tabs
+        // - when - tab count
         let tabs = rootTabBarController.tabBar.items
         let tabsCount = tabs?.count
         let allTabs = 2
+        // - then - tab count
         XCTAssertEqual(tabsCount, allTabs)
     }
 }
