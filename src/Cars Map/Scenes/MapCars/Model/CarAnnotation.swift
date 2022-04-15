@@ -11,7 +11,7 @@ class CarAnnotation: NSObject, MKAnnotation {
     // default
     var title: String?
     var subtitle: String?
-    var coordinate: CLLocationCoordinate2D
+    let coordinate: CLLocationCoordinate2D
     
     // customs
     var carData : Car
