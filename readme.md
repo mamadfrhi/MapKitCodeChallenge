@@ -1,11 +1,11 @@
-### What is it? 🙋🏻
+## What is it? 🙋🏻
 
 It's a pet project which has been developed as a code challenge. It's written purely in Swift without using 3rd party frameworks.
 
 
-### What do you want to show by this project❓
+## What do you want to show by this project❓
 
-How DO I respect the topics below while developing a software:
+How DO I **respect** the topics below while developing a software:
 
 * Reusability of the code 🔁
 * Clean Code Principles 🧼
