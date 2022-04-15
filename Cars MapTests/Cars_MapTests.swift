@@ -16,9 +16,8 @@ class Cars_MapTests: XCTestCase {
 extension Cars_MapTests {
     func testVCTitles() {
         // prepare
-        let data = self.makeRootTabBarAndGive()
-        let rootTabBarController = data.0
-        let cars = data.1
+        let rootTabBarController = UITabBarController()
+        let cars = makeCars()
         
         // first tab
         let mapCarsCoordinator = MapCarsCoordinator(rootTabBarController: rootTabBarController,
@@ -30,6 +29,7 @@ extension Cars_MapTests {
                                                       cars: cars)
         listCarsCoordinator.start()
         
+        // MARK: Start the test
         // reach 1st tab
         let mapNav = rootTabBarController.viewControllers?[0] as? UINavigationController
         let mapVC = mapNav?.viewControllers.first as? MapCarsVC
@@ -55,12 +55,33 @@ extension Cars_MapTests {
         let allTabs = 2
         XCTAssertEqual(tabsCount, allTabs)
     }
-    
-    func makeRootTabBarAndGive() -> (UITabBarController, [Car]) {
-        // preapring tab controller
+}
+
+// MARK: TableView tests
+extension Cars_MapTests {
+    func testTableView() {
+        
+        // preapre
         let cars = makeCars()
-        let _ = makeMapCarsVC(mapCarsViewModel: MapCarsVM(cars: cars))
-        return (UITabBarController(), cars)
+        let listCarsVM = ListCarsVM(cars: cars)
+        let listCarsVC = ListCarsVC.`init`(listCarsVM: listCarsVM)
+        let _ = listCarsVC.view
+        let actualFirstCell = listCarsVC.tableView(listCarsVC.tableViewCars, cellForRowAt: IndexPath(item: 0, section: 0))
+        // MARK: Start the test
+        let cellText = actualFirstCell.textLabel?.text
+        let firstCar = cars[0]
+        
+        // test cells
+        XCTAssertNotNil(actualFirstCell)
+        // text
+        XCTAssertEqual(cellText, firstCar.modelName)
+        // accessor type
+        XCTAssertEqual(actualFirstCell.accessoryType, .disclosureIndicator)
+        
+        // table view
+        let carsCountVM = listCarsVM.numberOfItems()
+        let tblViewRows = listCarsVC.tableViewCars.numberOfRows(inSection: 0)
+        XCTAssertEqual(tblViewRows, carsCountVM)
     }
 }
 
