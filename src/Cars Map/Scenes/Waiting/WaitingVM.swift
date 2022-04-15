@@ -8,7 +8,7 @@
 import Foundation
 
 
-class WaitingVM: WaitingViewModelType {
+class WaitingVM  {
     
     // MARK: Properties
     private weak var appServices: Serviceable?
@@ -16,7 +16,7 @@ class WaitingVM: WaitingViewModelType {
     var appCoordinatorDelegate: AppCoordinatorDelegate?
     var viewDelegate: WaitingViewModelViewDelegate?
     
-    var cars : [Car]? {
+    private var cars : [Car]? {
         didSet {
             if let cars = cars {
                 DispatchQueue.main.async {
@@ -33,7 +33,7 @@ class WaitingVM: WaitingViewModelType {
 }
 
 // MARK: Network
-extension WaitingVM {
+extension WaitingVM: WaitingViewModelType {
     func fetch() {
         appServices?.fetchCars {
             [weak self]

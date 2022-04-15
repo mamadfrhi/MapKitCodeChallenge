@@ -20,12 +20,12 @@ class WaitingVC: UIViewController {
     }
     
     // MARK: Outlets
-    @IBOutlet weak var acitivityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var infoLabel: UILabel!
-    @IBOutlet weak var retryBtn: UIButton!
+    @IBOutlet private weak var acitivityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var infoLabel: UILabel!
+    @IBOutlet private weak var retryBtn: UIButton!
     
     // MARK: Properties
-    var viewModel: WaitingVM! {
+    private var viewModel: WaitingVM! {
         didSet { viewModel.viewDelegate = self }
     }
     
@@ -36,7 +36,7 @@ class WaitingVC: UIViewController {
     }
     
     // MARK: Actions
-    @IBAction func retry(_ sender: Any) {
+    @IBAction private func retry(_ sender: Any) {
         hideError()
         viewModel.retry()
     }

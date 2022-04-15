@@ -51,7 +51,7 @@
 		87296F37280741FE0094D59B /* Cars MapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cars MapTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87296F39280741FE0094D59B /* Cars_MapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cars_MapTests.swift; sourceTree = "<group>"; };
 		87296F3B280741FE0094D59B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		873847A6280969BF005D79E1 /* AppServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppServices.swift; path = "Cars Map/Scenes/AppServices.swift"; sourceTree = SOURCE_ROOT; };
+		873847A6280969BF005D79E1 /* AppServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppServices.swift; path = "Cars Map/Scenes/Service/AppServices.swift"; sourceTree = SOURCE_ROOT; };
 		879EFF262804AAA000ED0CD0 /* MapCars.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapCars.storyboard; sourceTree = "<group>"; };
 		879EFF292804B17900ED0CD0 /* Waiting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Waiting.storyboard; sourceTree = "<group>"; };
 		879EFF2D2804B6F900ED0CD0 /* WaitingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingVC.swift; sourceTree = "<group>"; };
@@ -107,13 +107,21 @@
 			path = "Cars MapTests";
 			sourceTree = "<group>";
 		};
+		8754360D2809B14300BB28C4 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				873847A6280969BF005D79E1 /* AppServices.swift */,
+				87B6E7562804A5480059A1E3 /* ApiClient.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		879EFF312804B7FE00ED0CD0 /* Waiting */ = {
 			isa = PBXGroup;
 			children = (
 				879EFF292804B17900ED0CD0 /* Waiting.storyboard */,
 				879EFF2D2804B6F900ED0CD0 /* WaitingVC.swift */,
 				879EFF322804B85500ED0CD0 /* WaitingVM.swift */,
-				873847A6280969BF005D79E1 /* AppServices.swift */,
 			);
 			path = Waiting;
 			sourceTree = "<group>";
@@ -159,8 +167,8 @@
 			children = (
 				87B6E73A28049EF10059A1E3 /* Coordinator.swift */,
 				87B6E73B28049EF10059A1E3 /* AppCoordinator.swift */,
-				87B6E7562804A5480059A1E3 /* ApiClient.swift */,
 				879EFF352804B95900ED0CD0 /* Car.swift */,
+				8754360D2809B14300BB28C4 /* Service */,
 				879EFF312804B7FE00ED0CD0 /* Waiting */,
 				87B6E72428049D760059A1E3 /* MapCars */,
 				87B6E72528049D800059A1E3 /* ListCars */,

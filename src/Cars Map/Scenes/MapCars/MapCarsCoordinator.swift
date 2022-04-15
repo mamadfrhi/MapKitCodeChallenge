@@ -12,9 +12,7 @@ class MapCarsCoordinator: Coordinator {
     
     // MARK: Properties
     private weak var rootTabBarController: UITabBarController!
-    private var mapCarsNavigationContrller = UINavigationController()
-    
-    private let mapCarsStoryboard = UIStoryboard(name: "MapCars", bundle: nil)
+    private let mapCarsNavigationContrller = UINavigationController()
     
     // MARK: VM
     private var cars: [Car]
@@ -29,7 +27,6 @@ class MapCarsCoordinator: Coordinator {
     init(rootTabBarController: UITabBarController, cars: [Car]) {
         self.cars = cars
         self.rootTabBarController = rootTabBarController
-        super.init()
     }
     
     override func start() {
@@ -56,7 +53,7 @@ extension MapCarsCoordinator: MapCarsViewModelCoordinatorDelegate {
 //MARK: Navigation
 extension MapCarsCoordinator {
     private func showCarInfo(of car: Car) { // it shows a modal page
-        let carInfoSB = UIStoryboard.init(name: "CarInfo", bundle: nil)
+        let carInfoSB = UIStoryboard.init(name: "CarInfo", bundle: nil) // make a factory pattern for this class as well
         let carInfoVC = carInfoSB.instantiateViewController(withIdentifier: "CarInfoVC") as! CarInfoVC
         carInfoVC.car = car
         mapCarsNavigationContrller.present(carInfoVC,
