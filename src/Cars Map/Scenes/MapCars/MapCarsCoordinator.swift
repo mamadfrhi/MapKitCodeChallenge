@@ -28,8 +28,8 @@ class MapCarsCoordinator: Coordinator {
     // MARK: Coordinator
     init(rootTabBarController: UITabBarController, cars: [Car]) {
         self.cars = cars
-        super.init()
         self.rootTabBarController = rootTabBarController
+        super.init()
     }
     
     override func start() {
