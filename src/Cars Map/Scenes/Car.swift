@@ -43,46 +43,26 @@ struct CarViewData: CarViewDataType {
     }
     
     var uiImage : UIImage?
-    var carImageNativeUrl: URL? {
-        return URL(string: car.carImageUrl)
-    }
+    var carImageNativeUrl: URL? { return URL(string: car.carImageUrl) }
     
     // MARK: properties
-    var id: String {
-        return car.id
-    }
+    var id: String { return car.id }
     
-    var modelName: String{
-        return car.modelName
-    }
+    var modelName: String{ return car.modelName }
     
-    var name: String{
-        return car.name
-    }
+    var name: String{ return car.name }
     
-    var make: String{
-        return car.make
-    }
+    var make: String{ return car.make }
     
-    var color: String{
-        return car.color
-    }
+    var color: String{ return car.color }
     
-    var fuelLevel: Float{
-        return car.fuelLevel
-    }
+    var fuelLevel: Float{ return car.fuelLevel }
     
-    var latitude: Float{
-        return car.latitude
-    }
+    var latitude: Float{ return car.latitude }
     
-    var longitude: Float{
-        return car.longitude
-    }
+    var longitude: Float{ return car.longitude }
     
-    var carImageUrl: String {
-        return car.carImageUrl
-    }
+    var carImageUrl: String { return car.carImageUrl }
     
     // MARK: Init
     private let car: Car
