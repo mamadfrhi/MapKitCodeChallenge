@@ -34,7 +34,15 @@ How DO I **respect** the topics below while developing a software:
 
 ## Video 🎥
 
-<video src='https://youtube.com/shorts/gnMMv79w8Ew?feature=share' width=180/>
+<iframe
+    width="640"
+    src="https://www.youtube.com/shorts/gnMMv79w8Ew"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+>
+</iframe>
+
 
 ### Diagram
 You can find the diagram file in the repo and open it in [here](draw.io) 
