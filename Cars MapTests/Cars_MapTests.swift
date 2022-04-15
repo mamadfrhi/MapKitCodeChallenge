@@ -83,6 +83,33 @@ extension Cars_MapTests {
         let tblViewRows = listCarsVC.tableViewCars.numberOfRows(inSection: 0)
         XCTAssertEqual(tblViewRows, carsCountVM)
     }
+    
+    func testListCarsVM() {
+        
+        // - given -
+        let cars = makeCars()
+        let listCarsVM = ListCarsVM(cars: cars)
+        let listCarsVC = ListCarsVC.`init`(listCarsVM: listCarsVM)
+        let _ = listCarsVC.view
+        
+        // - when -
+        let actualVCCell = listCarsVC.tableView(listCarsVC.tableViewCars, cellForRowAt: IndexPath(row: 0, section: 0))
+        let actualVMCell = listCarsVM.itemFor(row: 0)
+        
+        // - then -
+        XCTAssertNotNil(actualVCCell)
+        XCTAssertNotNil(actualVMCell)
+        
+        // text
+        let vcCellText = actualVCCell.textLabel?.text
+        let vmCellText = actualVMCell.textLabel?.text
+        XCTAssertEqual(vcCellText, vmCellText)
+        
+        // accessory type
+        let vcCellAT = actualVCCell.accessoryType
+        let vmCellAT = actualVMCell.accessoryType
+        XCTAssertEqual(vcCellAT, vmCellAT)
+    }
 }
 
 // MARK: helpers
