@@ -53,7 +53,7 @@ extension Cars_MapTests {
         // - when - badge
         let badgeValue = mapVC!.tabBarItem.badgeValue!
         let carsCount = "\(cars.count)"
-        // - when - then
+        // - then - badge
         XCTAssertEqual(badgeValue, carsCount)
         
         // - when - tab count
@@ -65,9 +65,9 @@ extension Cars_MapTests {
     }
 }
 
-// MARK: TableView tests
+// MARK: ListCars tests
 extension Cars_MapTests {
-    func testTableView() {
+    func testListCarsTableView() {
         
         // - given -
         let cars = makeCars()
@@ -75,22 +75,23 @@ extension Cars_MapTests {
         let listCarsVC = ListCarsVC.`init`(listCarsVM: listCarsVM)
         let _ = listCarsVC.view
         
-        // - when -
+        // - when - cells
         let actualFirstCell = listCarsVC.tableView(listCarsVC.tableViewCars, cellForRowAt: IndexPath(row: 0, section: 0))
         let cellText = actualFirstCell.textLabel?.text
         let firstCar = cars[0]
         
-        // - then -
-        // test cells
+        // - then - cells
         XCTAssertNotNil(actualFirstCell)
         // text
         XCTAssertEqual(cellText, firstCar.modelName)
         // accessor type
         XCTAssertEqual(actualFirstCell.accessoryType, .disclosureIndicator)
         
-        // table view
+        
+        // - when - table view rows
         let carsCount = cars.count
         let tblViewRows = listCarsVC.tableViewCars.numberOfRows(inSection: 0)
+        // - then - table view rows
         XCTAssertEqual(tblViewRows, carsCount)
     }
     
@@ -102,22 +103,24 @@ extension Cars_MapTests {
         let listCarsVC = ListCarsVC.`init`(listCarsVM: listCarsVM)
         let _ = listCarsVC.view
         
-        // - when -
+        // - when - cells
         let actual_VC_Cell = listCarsVC.tableView(listCarsVC.tableViewCars, cellForRowAt: IndexPath(row: 0, section: 0))
         let actual_VM_Cell = listCarsVM.itemFor(row: 0)
-        
-        // - then -
+        // - then - cells
         XCTAssertNotNil(actual_VC_Cell)
         XCTAssertNotNil(actual_VM_Cell)
         
-        // text
+        
+        // - when - cell text
         let vcCellText = actual_VC_Cell.textLabel?.text
         let vmCellText = actual_VM_Cell.textLabel?.text
+        // - then - cell text
         XCTAssertEqual(vcCellText, vmCellText)
         
-        // accessory type
+        // - when - accessory type
         let vcCellAT = actual_VC_Cell.accessoryType
         let vmCellAT = actual_VM_Cell.accessoryType
+        // - then - accessory type
         XCTAssertEqual(vcCellAT, vmCellAT)
     }
 }
