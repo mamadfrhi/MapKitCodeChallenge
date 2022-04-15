@@ -159,3 +159,9 @@ extension Cars_MapTests {
         return mapCarsVC
     }
 }
+
+
+// TODO: good to write tests for
+// - checking fall-back images of cars
+// - mapkit testing
+// - modal page testing
