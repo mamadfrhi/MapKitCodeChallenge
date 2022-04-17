@@ -14,7 +14,7 @@ protocol Serviceable: class {
 
 class AppServices: Serviceable {
     
-    private weak var apiClient: Network?
+    private var apiClient: Network?
     
     // MARK: Init
     init(apiClient: Network) { self.apiClient = apiClient }

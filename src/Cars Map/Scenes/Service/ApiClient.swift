@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-protocol Network: class {
+protocol Network {
     func fetch(completionHandler: @escaping (Result<Any?, Error>) -> ())
 }
 
-class ApiClient: Network {
+struct ApiClient: Network {
     private let configuration: URLSessionConfiguration
     
     init(configuration: URLSessionConfiguration) {
