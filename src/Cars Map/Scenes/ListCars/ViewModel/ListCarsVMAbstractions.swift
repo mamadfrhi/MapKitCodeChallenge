@@ -13,7 +13,7 @@ protocol ListCarsVMType {
     // Data Source
     func numberOfItems() -> Int
     
-    func itemFor(row: Int) -> UITableViewCell
+    func itemFor(row: Int) -> Any
     
     // Events
     func didSelectRow(_ row: Int, from controller: UIViewController)

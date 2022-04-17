@@ -8,7 +8,7 @@
 import UIKit
 
 class ListCarsVC: UIViewController {
-   
+    
     // MARK: Factory
     class func `init`(listCarsVM: ListCarsVM) -> ListCarsVC {
         let storyboard = UIStoryboard(name: "ListCars", bundle: nil)
@@ -20,12 +20,13 @@ class ListCarsVC: UIViewController {
     
     // MARK: Properties
     private var viewModel: ListCarsVM!
+    private let cellIndentifier = "CarCell"
     
     // MARK: Outlets
     @IBOutlet weak var tableViewCars: UITableView!
     
     // MARK: UIViewController
-
+    
     // MARK: Setup
 }
 
@@ -36,7 +37,15 @@ extension ListCarsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        viewModel.itemFor(row: indexPath.row)
+        let carViewDataAny = viewModel.itemFor(row: indexPath.row)
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIndentifier),
+              let carViewData = carViewDataAny as? CarViewData  else {
+            return UITableViewCell()
+        }
+        cell.textLabel?.text = carViewData.modelName
+        cell.accessoryType = .disclosureIndicator
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

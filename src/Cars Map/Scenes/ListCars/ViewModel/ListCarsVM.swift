@@ -31,12 +31,9 @@ extension ListCarsVM: ListCarsVMType {
         cars.count
     }
     
-    func itemFor(row: Int) -> UITableViewCell {
-        let cell = UITableViewCell()
+    func itemFor(row: Int) -> Any {
         let carViewData = CarViewData(car: cars[row])
-        cell.textLabel?.text = carViewData.modelName
-        cell.accessoryType = .disclosureIndicator
-        return cell
+        return carViewData
     }
     
     func didSelectRow(_ row: Int, from controller: UIViewController) {
