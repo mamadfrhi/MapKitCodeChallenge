@@ -25,19 +25,8 @@ class ListCarsVC: UIViewController {
     @IBOutlet weak var tableViewCars: UITableView!
     
     // MARK: UIViewController
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setup()
-    }
 
     // MARK: Setup
-    private func setup() {
-        setupDelegeates()
-    }
-    private func setupDelegeates() {
-        tableViewCars.delegate = self
-        tableViewCars.dataSource = self
-    }
 }
 
 // MARK: - TableView Delegate & DataSource
