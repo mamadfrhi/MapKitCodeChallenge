@@ -18,11 +18,11 @@ class CarAnnotationView: MKAnnotationView {
     }
     // customs
     var imageView: UIImageView!
-    let carData: Car!
+    let carData: Car
     
     
     // MARK: Init
-    init(carData: Car?, annotation: MKAnnotation?, reuseIdentifier: String?, desiredWidth: Int) {
+    init(carData: Car, annotation: MKAnnotation?, reuseIdentifier: String?, desiredWidth: Int) {
         self.carData = carData
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         

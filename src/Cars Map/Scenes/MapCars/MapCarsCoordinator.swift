@@ -44,8 +44,8 @@ class MapCarsCoordinator: Coordinator {
 // MARK: - ViewModel Callbacks
 extension MapCarsCoordinator: MapCarsViewModelCoordinatorDelegate {
     func didSelect(_ annotationView: MKAnnotationView, from mapView: MKMapView) {
-        guard let carAnnotationView = annotationView as? CarAnnotationView,
-              let carData = carAnnotationView.carData else { return }
+        guard let carAnnotationView = annotationView as? CarAnnotationView else { return }
+        let carData = carAnnotationView.carData
         showCarInfo(of: carData)
     }
 }

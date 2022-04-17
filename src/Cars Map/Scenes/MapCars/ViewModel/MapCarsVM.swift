@@ -43,41 +43,18 @@ class MapCarsVM {
 extension MapCarsVM: MapCarsVMType {
     
     // DataSource
-    func viewFor(annotation: MKAnnotation, on mapView: MKMapView) -> MKAnnotationView? {
-        //Handle user location annotation..
-        if annotation.isKind(of: MKUserLocation.self) {
-            return nil  //Default is to let the system handle it.
-        }
-        
-        //Handle non-CarAnnotations..
-        if !(annotation.isKind(of: CarAnnotation.self)) {
-            return nil  //Default is to let the system handle it.
-        }
-        
-        //Handle CarAnnotation..
-        // too keep code base clean you can remove dequeueReusableAnnotationView too.
-        let carAnnotation = annotation as! CarAnnotation // force unwrap because we checked it above
-        let carData = carAnnotation.carData
-        // start to make annotationVIEW
-        // TODO: put init UI realted code to the VC
-        // make an abstraction for all annotations
-        // do switch on annotations and pass back data to VC
-        // on VC assign datas to views
-        // IDEA: good idea to make XIB for car annotations
-        // and encode data to the car annotation view
-        // also add view assignment to the annotation as well
-        var carAnnotationView: CarAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: "carAnnotationView") as? CarAnnotationView
-        
-        if carAnnotationView == nil {
-            carAnnotationView = CarAnnotationView(carData: carData,
-                                                  annotation: annotation,
-                                                  reuseIdentifier: "carAnnotationView",
-                                                  desiredWidth: 70)
-            carAnnotationView!.imageView.downloaded(from: carData!.carImageUrl) // take care of force unwrapping
-        }
-        
-        return carAnnotationView
+    func viewDataFor(annotation: MKAnnotation) -> Car {
+        let carAnnotation = annotation as! CarAnnotation
+        // force unwrapp because we're sure it's type of CarAnnotation
+        return carAnnotation.carData
     }
+    // TODO:
+    // make an abstraction for all annotations
+    // do switch on annotations and pass back data to VC
+    // on VC assign datas to views
+    // IDEA: good idea to make XIB for car annotations
+    // and encode data to the car annotation view
+    // also add view assignment to the annotation as well
     
     // Events
     func didSelectAnnotation(view: MKAnnotationView, from: MKMapView) {

@@ -27,6 +27,8 @@ class MapCarsVC: UIViewController {
     private var viewModel: MapCarsVM! {
         didSet { viewModel.viewDelegate = self }
     }
+    private let annotationViewID = "carAnnotationView"
+    private let annotationWidth = 70
     
     // MARK: UIViewController
     override func viewDidLoad() {
@@ -47,12 +49,19 @@ extension MapCarsVC: MapCarsViewModelViewDelegate {
 extension MapCarsVC: MKMapViewDelegate {
     // annotation view
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let annView = viewModel.viewFor(annotation: annotation, on: mapView)
-        return annView
+        let carData = viewModel.viewDataFor(annotation: annotation)
+        let newCarAnnotationView = CarAnnotationView(carData: carData,
+                                                     annotation: annotation,
+                                                     reuseIdentifier: annotationViewID,
+                                                     desiredWidth: annotationWidth)
+        newCarAnnotationView.imageView.downloaded(from: carData.carImageUrl)
+        return newCarAnnotationView
+        // TODO: use dequeue reuse annotation view for smoothing moves on map
     }
     
     // didSelect Event
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        mapView.deselectAnnotation(view.annotation, animated: true)
         viewModel.didSelectAnnotation(view: view, from: mapView)
     }
 }
