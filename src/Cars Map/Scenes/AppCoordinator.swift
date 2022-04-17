@@ -67,6 +67,12 @@ extension AppCoordinator {
 
 //MARK: View Configs
 extension AppCoordinator {
+    
+    private func configAppAppearance() {
+        configTabBarAppearance()
+        configNavigationBarAppearance()
+    }
+    
     private func configTabBarAppearance() {
         rootTabBarController.tabBar.barTintColor = UIColor(named: "sixt_black")
         rootTabBarController.tabBar.tintColor = UIColor(named: "sixt_orange")
@@ -76,11 +82,6 @@ extension AppCoordinator {
     private func configNavigationBarAppearance() {
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         UINavigationBar.appearance().titleTextAttributes = textAttributes
-    }
-    
-    private func configAppAppearance() {
-        configTabBarAppearance()
-        configNavigationBarAppearance()
     }
 }
 
