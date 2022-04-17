@@ -59,6 +59,13 @@ extension MapCarsVM: MapCarsVMType {
         let carAnnotation = annotation as! CarAnnotation // force unwrap because we checked it above
         let carData = carAnnotation.carData
         // start to make annotationVIEW
+        // TODO: put init UI realted code to the VC
+        // make an abstraction for all annotations
+        // do switch on annotations and pass back data to VC
+        // on VC assign datas to views
+        // IDEA: good idea to make XIB for car annotations
+        // and encode data to the car annotation view
+        // also add view assignment to the annotation as well
         var carAnnotationView: CarAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: "carAnnotationView") as? CarAnnotationView
         
         if carAnnotationView == nil {
