@@ -49,6 +49,8 @@ extension MapCarsVC: MapCarsViewModelViewDelegate {
 extension MapCarsVC: MKMapViewDelegate {
     // annotation view
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is CarAnnotation else { return nil }
+        
         let carData = viewModel.viewDataFor(annotation: annotation)
         let newCarAnnotationView = CarAnnotationView(carData: carData,
                                                      annotation: annotation,
