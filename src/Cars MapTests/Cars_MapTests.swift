@@ -23,15 +23,15 @@ extension Cars_MapTests {
         // -- start tab tests --
         // - given -
         let rootTabBarController = UITabBarController()
-        let cars = makeCars()
+        let carViewDatas = makeCarViewDatas()
         
         // first tab
         let mapCarsCoordinator = MapCarsCoordinator(rootTabBarController: rootTabBarController,
-                                                    cars: cars)
+                                                    carViewDatas: carViewDatas)
         mapCarsCoordinator.start()
         // second tab
         let listCarsCoordinator = ListCarsCoordinator(rootTabBarController: rootTabBarController,
-                                                      cars: cars)
+                                                      carViewDatas: carViewDatas)
         listCarsCoordinator.start()
         
         // - when - 1st tab
@@ -52,7 +52,7 @@ extension Cars_MapTests {
         
         // - when - badge
         let badgeValue = mapVC!.tabBarItem.badgeValue!
-        let carsCount = "\(cars.count)"
+        let carsCount = "\(carViewDatas.count)"
         // - then - badge
         XCTAssertEqual(badgeValue, carsCount)
         
@@ -70,8 +70,8 @@ extension Cars_MapTests {
     func testListCarsTableView() {
         
         // - given -
-        let cars = makeCars()
-        let listCarsVM = ListCarsVM(cars: cars)
+        let cars = makeCarViewDatas()
+        let listCarsVM = ListCarsVM(carViewDatas: cars)
         let listCarsVC = ListCarsVC.`init`(listCarsVM: listCarsVM)
         let _ = listCarsVC.view
         
@@ -98,36 +98,35 @@ extension Cars_MapTests {
     func testListCarsVM() {
         
         // - given -
-        let cars = makeCars()
-        let listCarsVM = ListCarsVM(cars: cars)
+        let carViewDatas = makeCarViewDatas()
+        let listCarsVM = ListCarsVM(carViewDatas: carViewDatas)
         let listCarsVC = ListCarsVC.`init`(listCarsVM: listCarsVM)
         let _ = listCarsVC.view
         
         // - when - cells
-        let actual_VC_Cell = listCarsVC.tableView(listCarsVC.tableViewCars, cellForRowAt: IndexPath(row: 0, section: 0))
-        let actual_VM_Cell = listCarsVM.itemFor(row: 0)
+        let actual_Cell = listCarsVC.tableView(listCarsVC.tableViewCars, cellForRowAt: IndexPath(row: 0, section: 0))
+        let vmViewData = listCarsVM.itemFor(row: 0) as! CarViewData
         // - then - cells
-        XCTAssertNotNil(actual_VC_Cell)
-        XCTAssertNotNil(actual_VM_Cell)
+        XCTAssertNotNil(actual_Cell)
+        XCTAssertNotNil(vmViewData)
         
         
         // - when - cell text
-        let vcCellText = actual_VC_Cell.textLabel?.text
-        let vmCellText = actual_VM_Cell.textLabel?.text
+        let vcCellText = actual_Cell.textLabel?.text
+        let vmCellText = vmViewData.modelName
         // - then - cell text
         XCTAssertEqual(vcCellText, vmCellText)
         
         // - when - accessory type
-        let vcCellAT = actual_VC_Cell.accessoryType
-        let vmCellAT = actual_VM_Cell.accessoryType
+        let vcCellAT = actual_Cell.accessoryType
         // - then - accessory type
-        XCTAssertEqual(vcCellAT, vmCellAT)
+        XCTAssertEqual(vcCellAT, .disclosureIndicator)
     }
 }
 
 // MARK: helpers
 extension Cars_MapTests {
-    func makeCars() -> [Car] {
+    func makeCarViewDatas() -> [CarViewData] {
         let car2 = Car(id: "WBAUE51070P352494",
                        modelName: "BMW 1er",
                        name: "Lasse",
@@ -147,7 +146,7 @@ extension Cars_MapTests {
                        latitude: 48.134557,
                        longitude: 11.576921,
                        carImageUrl: "https://cdn.sixt.io/codingtask/images/mini.png")
-        return [car1, car2]
+        return [car1, car2].compactMap { CarViewData(car: $0)}
     }
 
     func makeMapCarsVC(mapCarsVM: MapCarsVM) -> MapCarsVC {
