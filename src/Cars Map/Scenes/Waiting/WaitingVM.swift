@@ -55,7 +55,7 @@ extension WaitingVM: WaitingViewModelType {
         }
     }
     
-    private func ShowError(with errorMessage: String) {
+    private func showError(with errorMessage: String) {
         DispatchQueue.main.async {
             self.viewDelegate?.showError(text: errorMessage)
         }
