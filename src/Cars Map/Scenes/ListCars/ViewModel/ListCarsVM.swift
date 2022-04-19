@@ -18,32 +18,31 @@ class ListCarsVM {
     var listCarsCoordinatorDelegate: ListCarsViewModelCoordinatorDelegate?
     
     // MARK: Properties
-    private let cars: [Car]!
+    private let carViewDatas: [CarViewData]!
     // check if it must be weak or not
     
     // MARK: Init
-    init(cars: [Car]) { self.cars = cars }
+    init(carViewDatas: [CarViewData]) { self.carViewDatas = carViewDatas }
 }
 
 // MARK: - ViewModelType
 extension ListCarsVM: ListCarsVMType {
     func numberOfItems() -> Int {
-        cars.count
+        carViewDatas.count
     }
     
     func itemFor(row: Int) -> Any {
-        let carViewData = CarViewData(car: cars[row])
-        return carViewData
+        return carViewDatas[row]
     }
     
     func didSelectRow(_ row: Int, from controller: UIViewController) {
-        didSelect(car: cars[row], from: controller)
+        didSelect(carViewData: carViewDatas[row], from: controller)
     }
 }
 
 // MARK: - ViewModelCoordinator
 extension ListCarsVM: ListCarsViewModelCoordinatorDelegate {
-    func didSelect(car: Car, from controller: UIViewController) {
-        listCarsCoordinatorDelegate?.didSelect(car: car, from: controller)
+    func didSelect(carViewData: CarViewData, from controller: UIViewController) {
+        listCarsCoordinatorDelegate?.didSelect(carViewData: carViewData, from: controller)
     }
 }

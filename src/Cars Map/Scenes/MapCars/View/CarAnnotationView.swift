@@ -18,16 +18,17 @@ class CarAnnotationView: MKAnnotationView {
     }
     // customs
     var imageView: UIImageView!
-    let carData: Car
+    let carViewData: CarViewData
     
     
     // MARK: Init
-    init(carData: Car, annotation: MKAnnotation?, reuseIdentifier: String?, desiredWidth: Int) {
-        self.carData = carData
+    init(carViewData: CarViewData, annotation: MKAnnotation?, reuseIdentifier: String?, desiredWidth: Int) {
+        self.carViewData = carViewData
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         
         self.frame = CGRect(x: 0, y: 0, width: desiredWidth, height: desiredWidth)
         self.imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: desiredWidth, height: desiredWidth))
+        self.imageView.contentMode = .scaleAspectFit
         self.addSubview(self.imageView)
     }
     

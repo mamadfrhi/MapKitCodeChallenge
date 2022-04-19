@@ -14,17 +14,17 @@ class ListCarsCoordinator: Coordinator {
     private let listCarsNavigationContrller = UINavigationController()
     
     // MARK: VM
-    private let cars: [Car]
+    private let carViewDatas: [CarViewData]
     private var listCarsVM: ListCarsVM {
-        let listCarsVM = ListCarsVM(cars: cars)
+        let listCarsVM = ListCarsVM(carViewDatas: carViewDatas)
         listCarsVM.listCarsCoordinatorDelegate = self
         return listCarsVM
     }
     
     // MARK: Coordinator
-    init(rootTabBarController: UITabBarController, cars: [Car]) {
+    init(rootTabBarController: UITabBarController, carViewDatas: [CarViewData]) {
         self.rootTabBarController = rootTabBarController
-        self.cars = cars
+        self.carViewDatas = carViewDatas
     }
     
     override func start() {
@@ -41,17 +41,17 @@ class ListCarsCoordinator: Coordinator {
 
 // MARK: - ViewModel Callbacks
 extension ListCarsCoordinator: ListCarsViewModelCoordinatorDelegate {
-    func didSelect(car: Car, from controller: UIViewController) {
-        showCarInfo(of: car)
+    func didSelect(carViewData: CarViewData, from controller: UIViewController) {
+        showCarInfo(of: carViewData)
     }
 }
 
 //MARK: Navigation
 extension ListCarsCoordinator {
-    private func showCarInfo(of car: Car) { // it shows a modal page
+    private func showCarInfo(of carViewData: CarViewData) { // it shows a modal page
         let carInfoSB = UIStoryboard.init(name: "CarInfo", bundle: nil)
         let carInfoVC = carInfoSB.instantiateViewController(withIdentifier: "CarInfoVC") as! CarInfoVC
-        carInfoVC.car = car
+        carInfoVC.carViewData = carViewData
         listCarsNavigationContrller.present(carInfoVC, animated: true, completion: nil)
     }
 }

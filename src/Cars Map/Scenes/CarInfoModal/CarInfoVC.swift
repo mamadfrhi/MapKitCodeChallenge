@@ -13,7 +13,7 @@ import UIKit
 class CarInfoVC: UIViewController {
     
     //MARK: Properties
-    var car: Car? = nil
+    var carViewData: CarViewData? = nil
     
     //MARK: Outlets
     @IBOutlet private weak var gasImageView: UIImageView!
@@ -30,27 +30,24 @@ class CarInfoVC: UIViewController {
     
     // MARK: setup
     private func setup() {
-        guard let car = car else { return }
+        guard let carViewData = carViewData else { return }
         // Fuel module
         self.gasImageView.image = gasImageView.image?.fill(with: .red,
-                                                           percentage: CGFloat(car.fuelLevel))
-        fuelPercentage.text = "\(Int(car.fuelLevel * 100))%"
+                                                           percentage: CGFloat(carViewData.fuelLevel))
+        fuelPercentage.text = "\(Int(carViewData.fuelLevel * 100))%"
         // TODO: it's a good idea to make a module from
         // percentage label and the gas icon and re-use it everywhere
         
-        carImageView.downloaded(from: car.carImageUrl)
-        // TODO: Car image is downloading 1 time at CarMapsVM
-        // so to prevent 2 same network calls it's better to assign
-        // downloaded image to car model 1 time and pass it through app
+        carImageView.image = carViewData.uiImage
         
-        infoText.text = makeText(car: car)
+        infoText.text = makeText(carViewData: carViewData)
     }
     
-    private func makeText(car: Car) -> String {
+    private func makeText(carViewData: CarViewData) -> String {
         let words = [
-            car.name,
-            car.make,
-            car.modelName
+            carViewData.name,
+            carViewData.make,
+            carViewData.modelName
         ]
         var str = ""
         for word in words {

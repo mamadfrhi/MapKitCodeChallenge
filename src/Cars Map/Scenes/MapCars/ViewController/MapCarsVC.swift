@@ -51,13 +51,14 @@ extension MapCarsVC: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard annotation is CarAnnotation else { return nil }
         
-        let carData = viewModel.viewDataFor(annotation: annotation)
-        let newCarAnnotationView = CarAnnotationView(carData: carData,
+        let carViewData = viewModel.viewDataFor(annotation: annotation)
+        let carAnnotationView = CarAnnotationView(carViewData: carViewData,
                                                      annotation: annotation,
                                                      reuseIdentifier: annotationViewID,
                                                      desiredWidth: annotationWidth)
-        newCarAnnotationView.imageView.downloaded(from: carData.carImageUrl)
-        return newCarAnnotationView
+//        newCarAnnotationView.imageView.downloaded(from: carData.carImageUrl)
+        carAnnotationView.image = carViewData.uiImage
+        return carAnnotationView
         // TODO: use dequeue reuse annotation view for smoothing moves on map
     }
     

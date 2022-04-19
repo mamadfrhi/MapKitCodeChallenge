@@ -21,7 +21,7 @@ protocol ListCarsVMType {
 
 // MARK: - ViewModelCoordinator(delegate)
 protocol ListCarsViewModelCoordinatorDelegate: class {
-    func didSelect(car: Car, from controller: UIViewController)
+    func didSelect(carViewData: CarViewData, from controller: UIViewController)
 }
 
 

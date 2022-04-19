@@ -16,12 +16,10 @@ class WaitingVM  {
     var appCoordinatorDelegate: AppCoordinatorDelegate?
     var viewDelegate: WaitingViewModelViewDelegate?
     
-    private var cars : [Car]? {
+    private var carViewDatas : [CarViewData]? {
         didSet {
-            if let cars = cars {
-                DispatchQueue.main.async {
-                    self.appCoordinatorDelegate?.dataReceived(cars: cars)
-                }
+            DispatchQueue.main.async {
+                self.appCoordinatorDelegate?.dataReceived(carViewDatas: self.carViewDatas!)
             }
         }
     }
@@ -43,16 +41,16 @@ extension WaitingVM: WaitingViewModelType {
             // failure
             if let error = error {
                 let errorMessage = error.localizedDescription
-                sSelf.ShowError(with: errorMessage)
+                sSelf.showError(with: errorMessage)
                 return
             }
             
             if let cars = cars as? [Car] {
                 // success
-                sSelf.cars = cars
+                sSelf.carViewDatas = cars.compactMap { CarViewData(car: $0) }
             }else {
                 // failure
-                sSelf.ShowError(with: CarsAPIError.noData.localizedDescription)
+                sSelf.showError(with: CarsAPIError.noData.localizedDescription)
             }
         }
     }
@@ -74,7 +72,7 @@ protocol WaitingViewModelType {
 
 // MARK: - ViewModelCoordinator(delegate)
 protocol AppCoordinatorDelegate {
-    func dataReceived(cars: [Car])
+    func dataReceived(carViewDatas: [CarViewData])
 }
 
 // MARK: - ViewModelViewDelegate

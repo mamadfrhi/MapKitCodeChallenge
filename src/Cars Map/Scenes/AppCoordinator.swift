@@ -41,18 +41,18 @@ final class AppCoordinator: Coordinator { // TabCoordinator
 
 // MARK: Starts
 extension AppCoordinator {
-    private func startTabBarControllers(with cars: [Car]) {
+    private func startTabBarControllers(with carViewDatas: [CarViewData]) {
         
         configAppAppearance()
         // first tab
         let mapCarsCoordinator = MapCarsCoordinator(rootTabBarController: rootTabBarController,
-                                                    cars: cars)
+                                                    carViewDatas: carViewDatas)
         self.addChildCoordinator(mapCarsCoordinator)
         mapCarsCoordinator.start()
         
         // second tab
         let listCarsCoordinator = ListCarsCoordinator(rootTabBarController: rootTabBarController,
-                                                      cars: cars)
+                                                      carViewDatas: carViewDatas)
         self.addChildCoordinator(listCarsCoordinator)
         listCarsCoordinator.start()
     }
@@ -87,11 +87,11 @@ extension AppCoordinator {
 
 // MARK: AppCoordinator Delegate
 extension AppCoordinator: AppCoordinatorDelegate{
-    func dataReceived(cars: [Car]) {
-        print("\nI'm in AppCoordinator and received \(cars.count) cars.")
+    func dataReceived(carViewDatas: [CarViewData]) {
+        print("\nI'm in AppCoordinator and received \(carViewDatas.count) cars.")
         // close WaitingVC
         self.window?.rootViewController = rootTabBarController
         // start tabbars
-        startTabBarControllers(with: cars)
+        startTabBarControllers(with: carViewDatas)
     }
 }

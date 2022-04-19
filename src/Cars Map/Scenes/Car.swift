@@ -34,7 +34,7 @@ struct Car: Decodable {
 
 
 
-struct CarViewData: CarViewDataType {
+class CarViewData: CarViewDataType {
     // MARK: custom properties
     var coordinate: CLLocationCoordinate2D {
         let coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude),
@@ -42,8 +42,7 @@ struct CarViewData: CarViewDataType {
         return coordinate
     }
     
-    var uiImage : UIImage?
-    var carImageNativeUrl: URL? { return URL(string: car.carImageUrl) }
+    var uiImage = UIImage(named: "car")!
     
     // MARK: properties
     var id: String { return car.id }
@@ -67,5 +66,23 @@ struct CarViewData: CarViewDataType {
     // MARK: Init
     private let car: Car
     
-    init(car: Car) { self.car = car }
+    init(car: Car) {
+        self.car = car
+        if let url = URL(string: carImageUrl) { downloadImage(from: url) }
+    }
+    
+    
+    //MARK: Image Downloader
+    private func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+    
+    private func downloadImage(from url: URL) {
+        getData(from: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            DispatchQueue.main.async() {
+                self.uiImage = UIImage(data: data) ?? self.uiImage
+            }
+        }
+    }
 }

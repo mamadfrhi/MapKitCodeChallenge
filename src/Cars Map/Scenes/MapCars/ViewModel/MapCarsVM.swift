@@ -15,23 +15,22 @@ class MapCarsVM {
     var viewDelegate: MapCarsViewModelViewDelegate?
     
     // MARK: Properties
-    private let cars: [Car]!
+    private let carViewDatas: [CarViewData]
     
     // MARK: Init
-    init(cars: [Car]) { self.cars = cars }
+    init(carViewDatas: [CarViewData]) { self.carViewDatas = carViewDatas }
     
     func start() {
         // convert cars to annotations
-        let carAnnotations = convertCarsToannotations(from: cars)
+        let carAnnotations = convertCarViewDatasToannotations(from: carViewDatas)
         // call VC to refresh
         viewDelegate?.refreshScreen(with: carAnnotations)
     }
     
-    private func convertCarsToannotations(from cars: [Car]) -> [CarAnnotation] {
+    private func convertCarViewDatasToannotations(from carViewDatas: [CarViewData]) -> [CarAnnotation] {
         var carAnnotations: [CarAnnotation] = []
-        for car in cars {
-            let carViewData = CarViewData(car: car)
-            let carAnnotation = CarAnnotation(carData: car,
+        for carViewData in carViewDatas {
+            let carAnnotation = CarAnnotation(carViewData: carViewData,
                                               coordinate: carViewData.coordinate)
             carAnnotations.append(carAnnotation)
         }
@@ -43,10 +42,10 @@ class MapCarsVM {
 extension MapCarsVM: MapCarsVMType {
     
     // DataSource
-    func viewDataFor(annotation: MKAnnotation) -> Car {
+    func viewDataFor(annotation: MKAnnotation) -> CarViewData {
         let carAnnotation = annotation as! CarAnnotation
         // force unwrapp because we're sure it's type of CarAnnotation
-        return carAnnotation.carData
+        return carAnnotation.carViewData
     }
     // TODO:
     // make an abstraction for all annotations
