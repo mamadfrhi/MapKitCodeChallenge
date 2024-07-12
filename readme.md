@@ -21,7 +21,7 @@ How DO I **respect** the topics below while developing a software:
 #### MVVM-C + Services
 
 
-<img src="https://www.uplooder.net/img/image/88/f2b1d43c9ca8db58dea1fa056c320bdf/architecture-diagram.jpg" alt="J" width="300"/>
+<img src="[https://www.uplooder.net/img/image/88/f2b1d43c9ca8db58dea1fa056c320bdf/architecture-diagram.jpg](https://github.com/user-attachments/assets/47e44e81-27fa-491a-b6a3-ca1b23ee8008)" alt="J" width="300"/>
 
 
 
