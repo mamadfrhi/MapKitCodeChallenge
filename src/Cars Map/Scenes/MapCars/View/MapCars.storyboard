@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Map-->
+        <scene sceneID="Xdn-X7-zKj">
+            <objects>
+                <viewController storyboardIdentifier="MapCarsVC" title="Map" id="GTb-wt-Qmd" customClass="MapCarsVC" customModule="Cars_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Uog-cO-QtX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Jkr-Dv-FbX">
+                                <rect key="frame" x="0.0" y="40" width="414" height="822"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Aw9-s9-wOi"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Jkr-Dv-FbX" firstAttribute="trailing" secondItem="Aw9-s9-wOi" secondAttribute="trailing" id="9Ve-uM-3gE"/>
+                            <constraint firstItem="Jkr-Dv-FbX" firstAttribute="leading" secondItem="Aw9-s9-wOi" secondAttribute="leading" id="gwm-4B-cGW"/>
+                            <constraint firstItem="Aw9-s9-wOi" firstAttribute="top" secondItem="Jkr-Dv-FbX" secondAttribute="top" constant="4" id="oum-X8-b0m"/>
+                            <constraint firstItem="Jkr-Dv-FbX" firstAttribute="bottom" secondItem="Aw9-s9-wOi" secondAttribute="bottom" id="tm8-rs-4Co"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="Jkr-Dv-FbX" id="QSw-pw-1Fg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D7g-lh-y5b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="205.79710144927537" y="182.8125"/>
+        </scene>
+    </scenes>
+</document>
